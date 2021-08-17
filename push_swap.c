@@ -26,11 +26,14 @@ stack   *clear_stack(stack *pile)
 {
     stack *element;
     if(is_empty_stack(pile))
-        exit(EXIT_FAILURE);
-    element = pile;
-    pile = pile->next;
-    free(element);
-    return (clear_stack(pile));
+        return NULL;
+    while(pile)
+    {
+        element = pile;
+        pile = pile->next;
+        free(element);
+    }
+    return (pile);
 }
 
 int   depiler(stack *pile)
@@ -99,8 +102,8 @@ int main(int argc, char **argv)
     stack   *pileA;
     stack   *pileB;
 
-    pileA = initalisation(pileA);
-    pileB = initalisation(pileB);
+    pileA = NULL;
+    pileB = NULL;
     while(argc > 1)
     {
         if(ft_is_digit(argv[argc - 1]) == 1)
@@ -125,6 +128,8 @@ int main(int argc, char **argv)
     pileB = empiler(pileB, 6);
     pileB = empiler(pileB, 7);
    */
-    tri_pile(pileA,pileB);
+    pileA = tri_pile(pileA,pileB);
+    //afficherPile(pileA);
+    clear_stack(pileA);
     return 0;
 }
