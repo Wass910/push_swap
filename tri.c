@@ -22,15 +22,18 @@ stack   *ft_free_stack(stack *pile)
 stack   *ft_swap(stack *pile)
 {
     stack *element;
+    stack *tmp;
 
+    tmp = NULL;
     element = NULL;
     element = empiler(element, pile->value);
     pile = ft_free_stack(pile);
-    element = empiler(element, pile->value);
+    tmp = empiler(tmp, pile->value);
     pile = ft_free_stack(pile);
-    pile = empiler(pile, element->next->value);
     pile = empiler(pile, element->value);
+    pile = empiler(pile, tmp->value);
     free(element);
+    free(tmp);
     return (pile);
 }
 
@@ -127,12 +130,13 @@ stack    *tri_pile(stack *pileA, stack *pileB)
     
     //pileB = ft_swap_between(pileB, pileA->value);
     //pileA = ft_free_stack(pileA);
-    //pileA = ft_swap(pileA);
+    
+    pileA = ft_swap(pileA);
 
     //printf("\nEtat de la pile A:\n");
     //afficherPile(pileA);
     
-    pileA = ft_swap(pileA);
+    //pileA = ft_swap(pileA);
     //printf("\nEtat de la pile B:\n");
     //afficherPile(pileB);
 

@@ -127,8 +127,8 @@ int main(int argc, char **argv)
    */
     pileA = tri_pile(pileA,pileB);
     //afficherPile(pileA);
-    //clear_stack(pileA);
-    fflush(stdout);
-	system("leaks a.out | grep 'Process'");
+    clear_stack(pileA);
+    //fflush(stdout);
+	//system("leaks a.out | grep 'Process'");
     return 0;
 }
