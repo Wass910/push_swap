@@ -56,13 +56,6 @@ void    afficherPile(stack *pile)
     return ; 
 }
 
-stack   *initalisation(stack *pile)
-{
-    pile = malloc(sizeof(*pile));
-    pile = NULL;
-    return (pile);
-}
-
 int     ft_is_digit(char *str)
 {
     int i;
@@ -109,6 +102,8 @@ int main(int argc, char **argv)
         if(ft_is_digit(argv[argc - 1]) == 1)
         {
             printf("ERROR\n");
+            //fflush(stdout);
+	        //system("leaks a.out | grep 'Process'");
             return 0;
         }
         pileA = empiler(pileA, ft_atoi(argv[argc - 1]));
@@ -118,6 +113,8 @@ int main(int argc, char **argv)
     {
         printf("ERROR\n");
         clear_stack(pileA);
+        //fflush(stdout);
+	    //system("leaks a.out | grep 'Process'");
         return 0;
     }
     /*pileB = empiler(pileB, 1);
@@ -130,6 +127,8 @@ int main(int argc, char **argv)
    */
     pileA = tri_pile(pileA,pileB);
     //afficherPile(pileA);
-    clear_stack(pileA);
+    //clear_stack(pileA);
+    fflush(stdout);
+	system("leaks a.out | grep 'Process'");
     return 0;
 }

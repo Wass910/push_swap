@@ -25,9 +25,9 @@ stack   *ft_swap(stack *pile)
 
     element = NULL;
     element = empiler(element, pile->value);
-    pile = ft_next_number(pile);
+    pile = ft_free_stack(pile);
     element = empiler(element, pile->value);
-    pile = ft_next_number(pile);
+    pile = ft_free_stack(pile);
     pile = empiler(pile, element->next->value);
     pile = empiler(pile, element->value);
     free(element);
@@ -53,8 +53,8 @@ stack   *ft_reverse(stack *pile)
     stack *element;
     stack *tmp;
 
-    tmp = initalisation(tmp);
-    element = initalisation(element);
+    tmp = NULL;
+    element = NULL;
     element = empiler(element, depiler(pile));
     pile = ft_next_number(pile);
     tmp = pile;
@@ -108,7 +108,7 @@ stack    *ft_swap_between(stack *pile_more, int add)
 {
     stack *element;
 
-    element = initalisation(element);
+    element = NULL;
     element = empiler(element, add);
     pile_more = ft_add_front(&pile_more, element);
     return (pile_more);
@@ -125,8 +125,8 @@ stack    *tri_pile(stack *pileA, stack *pileB)
     //printf("\nEtat de la pile B:\n");
     //afficherPile(pileB);
     
-    //pileB=ft_swap_between(pileB, pileA->value);
-    //pileA = ft_next_number(pileA);
+    //pileB = ft_swap_between(pileB, pileA->value);
+    //pileA = ft_free_stack(pileA);
     //pileA = ft_swap(pileA);
 
     //printf("\nEtat de la pile A:\n");
@@ -144,5 +144,6 @@ stack    *tri_pile(stack *pileA, stack *pileB)
     afficherPile(pileA);
     //if(pileA->value > pileA->next->value)
     //printf("%d\n", element);
+    free(pileB);
     return (pileA);
 }
