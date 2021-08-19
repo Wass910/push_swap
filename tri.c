@@ -23,15 +23,13 @@ stack   *ft_swap(stack *pile)
 {
     stack *element;
     stack *tmp;
-
+    
     tmp = NULL;
     element = NULL;
     element = empiler(element, pile->value);
-    pile = ft_free_stack(pile);
-    tmp = empiler(tmp, pile->value);
-    pile = ft_free_stack(pile);
-    pile = empiler(pile, element->value);
-    pile = empiler(pile, tmp->value);
+    tmp = empiler(tmp, pile->next->value);
+    pile->value = tmp->value;
+    pile->next->value = element->value;
     free(element);
     free(tmp);
     return (pile);
@@ -118,10 +116,8 @@ stack    *ft_swap_between(stack *pile_more, int add)
 }
 
 
-stack    *tri_pile(stack *pileA, stack *pileB)
+stack    *tri_pile(stack *pileA, stack *pileB, int arg)
 {
-    printf("\nEtat de la pile A:\n");
-    afficherPile(pileA);
     
     //printf("\nEtat de la pile B:\n");
 
@@ -130,8 +126,9 @@ stack    *tri_pile(stack *pileA, stack *pileB)
     
     //pileB = ft_swap_between(pileB, pileA->value);
     //pileA = ft_free_stack(pileA);
-    
-    pileA = ft_swap(pileA);
+    //pileA = only_three(pileA, pileB, arg);
+    pileA = only_five(pileA, pileB, arg);
+    //pileA = ft_swap(pileA);
 
     //printf("\nEtat de la pile A:\n");
     //afficherPile(pileA);
@@ -140,12 +137,12 @@ stack    *tri_pile(stack *pileA, stack *pileB)
     //printf("\nEtat de la pile B:\n");
     //afficherPile(pileB);
 
-    //printf("\nEtat de la pile A:\n");
-    //afficherPile(pileA);
-
-    //pileA = ft_reverse_last(pileA);
     printf("\nEtat de la pile A:\n");
     afficherPile(pileA);
+
+    //pileA = ft_reverse_last(pileA);
+    //printf("\nEtat de la pile A:\n");
+    //afficherPile(pileA);
     //if(pileA->value > pileA->next->value)
     //printf("%d\n", element);
     free(pileB);

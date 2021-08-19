@@ -63,6 +63,8 @@ int     ft_is_digit(char *str)
     i = 0;
     while(str[i])
     {
+        if(str[i] == '-')
+            i++;
         if(str[i] < '0' || str[i] > '9')
             return 1;
         i++; 
@@ -94,9 +96,15 @@ int main(int argc, char **argv)
 {
     stack   *pileA;
     stack   *pileB;
+    int     arg;
 
+    arg = argc;
     pileA = NULL;
     pileB = NULL;
+    if(argc <= 2)
+    {
+        return 0;
+    }
     while(argc > 1)
     {
         if(ft_is_digit(argv[argc - 1]) == 1)
@@ -117,18 +125,17 @@ int main(int argc, char **argv)
 	    //system("leaks a.out | grep 'Process'");
         return 0;
     }
-    /*pileB = empiler(pileB, 1);
-    pileB = empiler(pileB, 2);
+    /*pileB = empiler(pileB, 2);
     pileB = empiler(pileB, 3);
     pileB = empiler(pileB, 4);
     pileB = empiler(pileB, 5);
     pileB = empiler(pileB, 6);
     pileB = empiler(pileB, 7);
    */
-    pileA = tri_pile(pileA,pileB);
+    pileA = tri_pile(pileA,pileB, arg);
     //afficherPile(pileA);
     clear_stack(pileA);
-    fflush(stdout);
-	system("leaks a.out | grep 'Process'");
+    //fflush(stdout);
+	//system("leaks a.out | grep 'Process'");
     return 0;
 }
