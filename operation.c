@@ -69,9 +69,9 @@ stack    *only_five(stack *pileA, stack *pileB, int arg)
     }
     else if(tmp == 1)
     {
+        pileA = ft_reverse(pileA);
         pileA = ft_swap_between(pileA, pileB->value);
         pileB = ft_free_stack(pileB);
-        pileA = ft_swap(pileA);
         i = i + 2;
     }
     else if(tmp == 0)
@@ -105,13 +105,12 @@ stack    *only_five(stack *pileA, stack *pileB, int arg)
     }
     else if(tmp == 2)
     {
-        pileA = ft_reverse_last(pileA);
-        pileA = ft_reverse_last(pileA);
+        pileA = ft_reverse(pileA);
         pileA = ft_swap_between(pileA, pileB->value);
         pileB = ft_free_stack(pileB);
+        pileA = ft_swap(pileA);
         pileA = ft_reverse_last(pileA);
-        pileA = ft_reverse_last(pileA);
-        i = i + 5;
+        i = i + 4;
     }
     else if(tmp == 1)
     {
@@ -126,6 +125,7 @@ stack    *only_five(stack *pileA, stack *pileB, int arg)
         pileB = ft_free_stack(pileB);
         i++;
     }
-    printf(" nombre d operation = %d\n",i + 1);
+    
+    printf("nombre d operation = %d\n",i);
     return (pileA);
 }
