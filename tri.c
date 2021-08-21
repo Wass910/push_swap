@@ -126,6 +126,8 @@ stack    *tri_pile(stack *pileA, stack *pileB, int arg)
         pileA = only_three(pileA, arg);
     else if(arg > 4 && arg < 7)
         pileA = only_five(pileA, pileB, arg);
+    else
+        pileA = ft_hundred(pileA, pileB);
     //printf("\nEtat de la pile B:\n");
 
     //printf("\nEtat de la pile B:\n");
@@ -143,7 +145,7 @@ stack    *tri_pile(stack *pileA, stack *pileB, int arg)
     //printf("\nEtat de la pile B:\n");
     //afficherPile(pileB);
 
-    printf("\nEtat de la pile A:\n");
+    printf("Etat de la pile A:\n");
     afficherPile(pileA);
 
     //pileA = ft_reverse_last(pileA);

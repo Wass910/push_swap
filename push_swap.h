@@ -29,3 +29,4 @@ stack   *for_four(stack *pileA, stack *pileB);
 stack   *for_five(stack *pileA, stack *pileB);
 stack   *ft_for_two(stack *pileA);
 stack   *ft_parcing_five(stack *pileA, stack *pileB, int tmp);
+stack   *ft_hundred(stack *pileA, stack *pileB);
