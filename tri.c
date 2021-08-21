@@ -32,6 +32,7 @@ stack   *ft_swap(stack *pile)
     pile->next->value = element->value;
     free(element);
     free(tmp);
+    printf("oui\n");
     return (pile);
 }
 
@@ -60,6 +61,7 @@ stack   *ft_reverse(stack *pile)
     pile = ft_next_number(pile);
     tmp = pile;
     pile = ft_add_back(&tmp, element);
+    printf("oui\n");
     return (tmp);
 }
 
@@ -102,6 +104,7 @@ stack   *ft_reverse_last(stack *pile)
         element = ft_next_number(element);
     }
     final = ft_add_front(&final, tmp);
+    printf("oui\n");
     return (final);
 }
 
@@ -112,13 +115,17 @@ stack    *ft_swap_between(stack *pile_more, int add)
     element = NULL;
     element = empiler(element, add);
     pile_more = ft_add_front(&pile_more, element);
+    printf("oui\n");
     return (pile_more);
 }
 
 
 stack    *tri_pile(stack *pileA, stack *pileB, int arg)
 {
-    
+    if(arg == 3 || arg == 4)
+        pileA = only_three(pileA, arg);
+    else if(arg > 4 && arg < 7)
+        pileA = only_five(pileA, pileB, arg);
     //printf("\nEtat de la pile B:\n");
 
     //printf("\nEtat de la pile B:\n");
@@ -127,7 +134,6 @@ stack    *tri_pile(stack *pileA, stack *pileB, int arg)
     //pileB = ft_swap_between(pileB, pileA->value);
     //pileA = ft_free_stack(pileA);
     //pileA = only_three(pileA, pileB, arg);
-    pileA = only_five(pileA, pileB, arg);
     //pileA = ft_swap(pileA);
 
     //printf("\nEtat de la pile A:\n");

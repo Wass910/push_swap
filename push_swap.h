@@ -24,3 +24,8 @@ stack   *ft_reverse_last(stack *pile);
 stack    *ft_swap_between(stack *pile_more, int add);
 stack    *only_three(stack *pileA, int arg);
 stack    *only_five(stack *pileA, stack *pileB, int arg);
+stack   *ft_for_four(stack *pileA, stack *pileB, stack *element);
+stack   *for_four(stack *pileA, stack *pileB);
+stack   *for_five(stack *pileA, stack *pileB);
+stack   *ft_for_two(stack *pileA);
+stack   *ft_parcing_five(stack *pileA, stack *pileB, int tmp);
