@@ -58,9 +58,9 @@ stack   *only_five(stack *pileA, stack *pileB, int arg)
         pileA = for_four(pileA, pileB);
         return (pileA);
     }
-    pileB = ft_swap_between(pileB, pileA->value);
+    pileB = ft_swap_between_b(pileB, pileA->value);
     pileA = ft_free_stack(pileA);
-    pileB = ft_swap_between(pileB, pileA->value);
+    pileB = ft_swap_between_b(pileB, pileA->value);
     pileA = ft_free_stack(pileA);
     pileA = only_three(pileA, arg);
     element = pileA;
