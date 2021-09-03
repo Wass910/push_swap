@@ -133,16 +133,16 @@ stack    *ft_swap_between_b(stack *pile_more, int add)
 
 stack    *tri_pile(stack *pileA, stack *pileB, int arg)
 {
-    if(arg == 3 || arg == 4)
+    if(arg == 2 || arg == 3)
         pileA = only_three(pileA, arg);
-    else if(arg > 4 && arg < 7)
+    else if(arg > 3 && arg < 6)
         pileA = only_five(pileA, pileB, arg);
-    else if(arg >= 7 && arg < 101)
+    else if(arg >= 6 && arg < 100)
         pileA = ft_hundred(pileA, pileB);
-    else if(arg >= 102)
+    else if(arg >= 100)
         pileA = ft_hundred(pileA, pileB);
-    else 
-        pileA = ft_opti_hundred(pileA, pileB);
+    //else 
+    //    pileA = ft_opti_hundred(pileA, pileB);
     //printf("\nEtat de la pile B:\n");
 
     //printf("\nEtat de la pile B:\n");
@@ -153,8 +153,8 @@ stack    *tri_pile(stack *pileA, stack *pileB, int arg)
     //pileA = only_three(pileA, pileB, arg);
     //pileA = ft_swap(pileA);
 
-    //printf("\nEtat de la pile A:\n");
-    //afficherPile(pileA);
+    printf("\nEtat de la pile A:\n");
+    afficherPile(pileA);
     
     //pileA = ft_swap(pileA);
     //printf("\nEtat de la pile B:\n");

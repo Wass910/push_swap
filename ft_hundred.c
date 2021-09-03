@@ -55,6 +55,5 @@ stack   *ft_hundred(stack *pileA, stack *pileB)
         pileA = ft_swap_between(pileA, pileB->value);
         pileB = ft_free_stack(pileB);
     }
-    //printf("i = %d\n", i);
     return (pileA);
 }

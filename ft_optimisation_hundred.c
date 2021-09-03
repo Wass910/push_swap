@@ -21,6 +21,23 @@ stack   *ft_tri_opti_hundred(stack *pileA, int pos, int i)
     return (pileA);
 }
 
+int     find_median(stack *element,int tmp)
+{
+    int med;
+    int i;
+    int pos;
+    while(element)
+    {
+        if(tmp > element->value)
+        {
+            tmp = element->value;
+            i = pos;
+        }
+        pos++;
+        element = element->next; 
+    }
+    return med;
+}
 stack   *ft_opti_hundred(stack *pileA, stack *pileB)
 {
     int i ;
@@ -31,28 +48,30 @@ stack   *ft_opti_hundred(stack *pileA, stack *pileB)
     int count = 100;
 
     element = pileA;
-    while(count > 0)
+    tmp = element->value;
+    while(element)
     {
-        pos = 1;
-        i = 1;
-        tmp = element->value;
+        if(tmp > element->value)
+        {
+            tmp = element->value;
+            i = pos;
+        }
+        pos++;
+        element = element->next; 
+    }
+    element = pileA;
+    while(count < 50 )
+    {
         while(element)
         {
-            if(tmp > element->value)
-            {
+            if(element->value > tmp)
                 tmp = element->value;
-                i = pos;
-            }
-            pos++;
-            element = element->next; 
+            element = element->next;
         }
-        count--;
-        pileA = ft_tri_opti_hundred(pileA, pos, i);
-        pileB = ft_swap_between_b(pileB, pileA->value);
-        pileA = ft_free_stack(pileA);
         element = pileA;
+        count--;
     }
-  
+    printf("tmp = %d\n", tmp);
     /*while(count > 0)
     {
         pos = 1;

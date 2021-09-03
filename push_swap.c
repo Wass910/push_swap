@@ -97,45 +97,66 @@ int main(int argc, char **argv)
     stack   *pileA;
     stack   *pileB;
     int     arg;
+    char **dest;
+    int i = 0;
 
-    arg = argc;
+    arg = 0;
     pileA = NULL;
     pileB = NULL;
     if(argc <= 2)
     {
-        return 0;
-    }
-    while(argc > 1)
-    {
-        if(ft_is_digit(argv[argc - 1]) == 1)
+        dest = ft_split(argv[1], ' ');
+        while(dest[i] != NULL)
+            i++;
+        arg = i;
+        i--;
+        if(i < 2)
         {
-            printf("ERROR\n");
-            //fflush(stdout);
-	        //system("leaks a.out | grep 'Process'");
             return 0;
         }
-        pileA = empiler(pileA, ft_atoi(argv[argc - 1]));
-        argc--;
+        else
+        {
+           while(i >= 0)
+            {
+                pileA = empiler(pileA, ft_atoi(dest[i]));
+                i--;
+            }
+        }
     }
-    if(ft_verif_double(pileA) == 1)
+    else
     {
-        printf("ERROR\n");
-        clear_stack(pileA);
-        //fflush(stdout);
-	    //system("leaks a.out | grep 'Process'");
-        return 0;
+        while(argc > 1)
+        {
+            dest = ft_split(argv[argc - 1], ' ');
+            while(dest[i] != NULL)
+                i++;
+            i--;
+            while(i >= 0)
+            {
+                pileA = empiler(pileA, ft_atoi(dest[i]));
+                arg++;
+                i--;
+            }
+            //if(argv[argc - 1][0] == '"')
+            //    printf("salut");
+            //if(ft_is_digit(argv[argc - 1]) == 1)
+            //{
+            //    printf("ERROR\n");
+            //    return 0;
+            //}
+            //pileA = empiler(pileA, ft_atoi(argv[argc - 1]));
+            i = 0;
+            argc--;
+        }  
+        if(ft_verif_double(pileA) == 1)
+        {
+            printf("ERROR\n");
+            clear_stack(pileA);
+           return 0;
+        }
     }
-    /*pileB = empiler(pileB, 2);
-    pileB = empiler(pileB, 3);
-    pileB = empiler(pileB, 4);
-    pileB = empiler(pileB, 5);
-    pileB = empiler(pileB, 6);
-    pileB = empiler(pileB, 7);
-   */
+    printf("arg = %d", arg);
     pileA = tri_pile(pileA,pileB, arg);
-    //afficherPile(pileA);
     clear_stack(pileA);
-    //fflush(stdout);
-	//system("leaks a.out | grep 'Process'");
     return 0;
 }
