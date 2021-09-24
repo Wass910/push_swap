@@ -70,7 +70,7 @@ stack     *ft_tri_tab(stack *tab)
     stack *tmp_tab;
     stack *final;
 
-    count = 49;
+    count = 44;
     tmp_tab = NULL;
     final = NULL;
     tmp = tab->value;
@@ -78,7 +78,7 @@ stack     *ft_tri_tab(stack *tab)
     tmp_tab = empiler(tmp_tab, tmp);
     tmp_tab = ft_norme_for_tritab(count, tmp, tmp_tab, tab);
     count = 0;
-    while(count < 50)
+    while(count < 45)
     {
         final = ft_swap_between_tmp(final, tmp_tab->value);
         tmp_tab = ft_free_stack(tmp_tab);
@@ -92,7 +92,7 @@ stack   *ft_norme_for_find_litle(stack *tmp_elem, stack *element, stack *pileA, 
     int pos;
     int count;
 
-    count = 49;
+    count = 44;
     while(count > 0)
     {
         pos = 1;
@@ -140,7 +140,7 @@ stack   *ft_norme_for_optihundred(stack *pileA, stack *pileB)
     int i;
 
     i = 0;
-    while(i < 50)
+    while(i < 45)
     {
         pileB= ft_reverse_last_b(pileB);
         pileA = ft_swap_between(pileA, pileB->value);
@@ -158,7 +158,7 @@ stack   *ft_opti_hundred(stack *pileA, stack *pileB)
     stack *tab;
     
     i = 1;
-    tab = ft_find_little(pileA, 49);
+    tab = ft_find_little(pileA, 44);
     tab = ft_tri_tab(tab);
     while (tab)
     {
