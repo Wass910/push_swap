@@ -1,24 +1,5 @@
 #include "push_swap.h"
 
-stack   *ft_next_number(stack *pile)
-{
-    stack *tmp;
-
-    tmp = pile;
-    pile = pile->next;
-    free(tmp);
-    return (pile);
-}
-
-stack   *ft_free_stack(stack *pile)
-{
-    stack *element;
-
-    element = pile->next;
-    free(pile);
-    return(element);
-}
-
 stack   *ft_swap(stack *pile)
 {
     stack *element;
@@ -65,6 +46,21 @@ stack   *ft_reverse(stack *pile)
     return (tmp);
 }
 
+stack   *ft_reverse_b(stack *pile)
+{
+    stack *element;
+    stack *tmp;
+
+    tmp = NULL;
+    element = NULL;
+    element = empiler(element, depiler(pile));
+    pile = ft_next_number(pile);
+    tmp = pile;
+    pile = ft_add_back(&tmp, element);
+    printf("rb\n");
+    return (tmp);
+}
+
 stack *ft_add_front(stack **alst, stack *new)
 {
     stack *tmp;
@@ -108,7 +104,45 @@ stack   *ft_reverse_last(stack *pile)
     return (final);
 }
 
+stack   *ft_reverse_last_b(stack *pile)
+{
+    stack *element;
+    stack *tmp;
+    stack *final;
+
+    final = NULL;
+    tmp = NULL;
+    element = NULL;
+    tmp = pile;
+    while(tmp->next)
+        tmp = tmp->next;
+    while(pile->next)
+    {
+        element = empiler(element, pile->value);
+        pile = ft_next_number(pile);
+    }
+    while(element)
+    {
+        final = empiler(final, element->value);
+        element = ft_next_number(element);
+    }
+    final = ft_add_front(&final, tmp);
+    printf("rrb\n");
+    return (final);
+}
+
 stack    *ft_swap_between(stack *pile_more, int add)
+{
+    stack *element;
+
+    element = NULL;
+    element = empiler(element, add);
+    pile_more = ft_add_front(&pile_more, element);
+    printf("pa\n");
+    return (pile_more);
+}
+
+stack    *ft_swap_between_tmp(stack *pile_more, int add)
 {
     stack *element;
 
@@ -138,36 +172,15 @@ stack    *tri_pile(stack *pileA, stack *pileB, int arg)
     else if(arg > 3 && arg < 6)
         pileA = only_five(pileA, pileB, arg);
     else if(arg >= 6 && arg < 100)
-        pileA = ft_hundred(pileA, pileB);
-    else if(arg >= 100)
-        pileA = ft_hundred(pileA, pileB);
-    //else 
-    //    pileA = ft_opti_hundred(pileA, pileB);
-    //printf("\nEtat de la pile B:\n");
+        pileA = ft_hundred(pileA);
+    else if(arg == 100)
+        pileA = ft_opti_hundred(pileA, pileB);
+    else if(arg > 100)
+        pileA = ft_hundred(pileA);
 
-    //printf("\nEtat de la pile B:\n");
-    //afficherPile(pileB);
-    
-    //pileB = ft_swap_between(pileB, pileA->value);
-    //pileA = ft_free_stack(pileA);
-    //pileA = only_three(pileA, pileB, arg);
-    //pileA = ft_swap(pileA);
-
-    printf("\nEtat de la pile A:\n");
-    afficherPile(pileA);
-    
-    //pileA = ft_swap(pileA);
-    //printf("\nEtat de la pile B:\n");
-    //afficherPile(pileB);
-
-    //printf("Etat de la pile A:\n");
-    //afficherPile(pileA);
-
-    //pileA = ft_reverse_last(pileA);
     //printf("\nEtat de la pile A:\n");
     //afficherPile(pileA);
-    //if(pileA->value > pileA->next->value)
-    //printf("%d\n", element);
+    
     free(pileB);
     return (pileA);
 }

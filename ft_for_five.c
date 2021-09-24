@@ -53,7 +53,7 @@ stack   *only_five(stack *pileA, stack *pileB, int arg)
     stack *element;
     int tmp = 0;
 
-    if (arg == 5)
+    if (arg == 4)
     {
         pileA = for_four(pileA, pileB);
         return (pileA);
@@ -66,7 +66,7 @@ stack   *only_five(stack *pileA, stack *pileB, int arg)
     element = pileA;
     pileA = ft_for_four(pileA, pileB, element);
     pileB = ft_free_stack(pileB);
-    if (arg == 6)
+    if (arg == 5)
         pileA = for_five(pileA, pileB);
     pileB = ft_free_stack(pileB);
     return (pileA);

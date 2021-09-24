@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+stack   *ft_for_tmp_two(stack *pileA, int i)
+{
+    pileA = ft_reverse_last(pileA);
+    pileA = ft_swap_between(pileA, i);
+    pileA = ft_reverse_last(pileA);
+    pileA = ft_reverse_last(pileA);
+    return pileA;
+}
+
 stack   *ft_for_four(stack *pileA, stack *pileB, stack *element)
 {
     int tmp;
@@ -16,12 +25,7 @@ stack   *ft_for_four(stack *pileA, stack *pileB, stack *element)
         pileA = ft_reverse(pileA);
     }
     else if(tmp == 2)
-    {
-        pileA = ft_reverse_last(pileA);
-        pileA = ft_swap_between(pileA, pileB->value);
-        pileA = ft_reverse_last(pileA);
-        pileA = ft_reverse_last(pileA);
-    }
+        pileA = ft_for_tmp_two(pileA, pileB->value);
     else if(tmp == 1)
     {
         pileA = ft_swap_between(pileA, pileB->value);

@@ -2,94 +2,77 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-int     is_empty_stack(stack *st)
+stack *ft_fill_pile(int i, stack *pileA, char **dest)
 {
-    if(st == NULL)
-        return (1);
-    return (0);
+    while(i >= 0)
+    {
+        if(ft_is_digit(dest[i]) == 1)
+        {
+            clear_stack(pileA);
+            printf("ERROR\n");
+            exit(EXIT_FAILURE);
+        }
+        pileA = empiler(pileA, ft_atoi(dest[i]));
+        i--;
+    }
+    return (pileA);
 }
 
-stack   *empiler(stack *pile, int nombre)
+stack *ft_argc_max(char **argv, int argc, stack *pileA)
+{
+    int i = 0;
+    char **dest;
+
+    while(argc > 1)
+    {
+        dest = ft_split(argv[argc - 1], ' ');
+        while(dest[i] != NULL)
+            i++;
+        i--;
+        pileA = ft_fill_pile(i, pileA, dest);
+        i = 0;
+        argc--;
+    }
+    return (pileA);
+}
+
+stack *ft_argc_min(char **argv, stack *pileA)
+{
+    int i = 0;
+    char **dest;
+
+    dest = ft_split(argv[1], ' ');
+    if (dest != NULL)
+    {
+        while(dest[i] != NULL)
+            i++;
+    }
+    i--;
+    if(i == 0)
+        return 0;
+    else
+        pileA = ft_fill_pile(i, pileA, dest);
+    return (pileA);
+}
+
+int    ft_is_order(stack *pileA)
 {
     stack *element;
-
-    element = malloc(sizeof(*element));
-    if(element == NULL)
-        exit(EXIT_FAILURE);
-    element->value = nombre;
-    element->next = pile;
-    
-    return (element);
-}
-
-stack   *clear_stack(stack *pile)
-{
-    stack *element;
-    if(is_empty_stack(pile))
-        return NULL;
-    while(pile)
-    {
-        element = pile;
-        pile = pile->next;
-        free(element);
-    }
-    return (pile);
-}
-
-int   depiler(stack *pile)
-{
-    return (pile->value);
-}
-
-void    afficherPile(stack *pile)
-{
-    if (pile == NULL)
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    while(!is_empty_stack(pile))
-    {
-        printf("[%d]\n", pile->value);
-        pile = pile->next;
-    }
-    return ; 
-}
-
-int     ft_is_digit(char *str)
-{
     int i;
 
+    if(!pileA)
+        return 1;
     i = 0;
-    while(str[i])
+    element = pileA->next;
+    while(pileA->next)
     {
-        if(str[i] == '-')
-            i++;
-        if(str[i] < '0' || str[i] > '9')
-            return 1;
-        i++; 
-    }
-    return 0;
-}
-
-int     ft_verif_double(stack *pile)
-{
-    stack   *pile_tmp;
-    int     val;
-
-    while(pile)
-    {
-        pile_tmp = pile->next;
-        val = pile->value;
-        while(pile_tmp)
+        if(pileA->value > pileA->next->value)
         {
-            if(val == pile_tmp->value)
-                return (1);
-            pile_tmp = pile_tmp->next;
+            i++;
         }
-        pile = pile->next;
+        pileA = pileA->next;
     }
-    return (0);
+    return i;
 }
 
 int main(int argc, char **argv)
@@ -98,65 +81,23 @@ int main(int argc, char **argv)
     stack   *pileB;
     int     arg;
     char **dest;
-    int i = 0;
 
     arg = 0;
     pileA = NULL;
     pileB = NULL;
     if(argc <= 2)
-    {
-        dest = ft_split(argv[1], ' ');
-        while(dest[i] != NULL)
-            i++;
-        arg = i;
-        i--;
-        if(i < 2)
-        {
-            return 0;
-        }
-        else
-        {
-           while(i >= 0)
-            {
-                pileA = empiler(pileA, ft_atoi(dest[i]));
-                i--;
-            }
-        }
-    }
+        pileA = ft_argc_min(argv, pileA);
     else
+        pileA = ft_argc_max(argv, argc, pileA);
+    ft_verif_double(pileA);
+    arg = ft_lstsize(pileA);
+    if((ft_is_order(pileA)) == 0 )
     {
-        while(argc > 1)
-        {
-            dest = ft_split(argv[argc - 1], ' ');
-            while(dest[i] != NULL)
-                i++;
-            i--;
-            while(i >= 0)
-            {
-                pileA = empiler(pileA, ft_atoi(dest[i]));
-                arg++;
-                i--;
-            }
-            //if(argv[argc - 1][0] == '"')
-            //    printf("salut");
-            //if(ft_is_digit(argv[argc - 1]) == 1)
-            //{
-            //    printf("ERROR\n");
-            //    return 0;
-            //}
-            //pileA = empiler(pileA, ft_atoi(argv[argc - 1]));
-            i = 0;
-            argc--;
-        }  
-        if(ft_verif_double(pileA) == 1)
-        {
-            printf("ERROR\n");
-            clear_stack(pileA);
-           return 0;
-        }
+        printf("pile trie\n");
+        clear_stack(pileA);
+        exit(EXIT_FAILURE);
     }
-    printf("arg = %d", arg);
     pileA = tri_pile(pileA,pileB, arg);
-    clear_stack(pileA);
+    //clear_stack(pileA);
     return 0;
 }
