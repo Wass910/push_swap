@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: idhiba <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 14:52:30 by idhiba            #+#    #+#             */
+/*   Updated: 2021/10/05 14:56:45 by idhiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int				pos_word(char *s, char c, unsigned int order)
+int	pos_word(char *s, char c, unsigned int order)
 {
 	int				is_word;
 	unsigned int	cnt;
@@ -25,7 +37,7 @@ int				pos_word(char *s, char c, unsigned int order)
 	return (pos);
 }
 
-static int		count_words(char *s, char c)
+static int	count_words(char *s, char c)
 {
 	int				is_word;
 	unsigned int	cnt;
@@ -46,7 +58,7 @@ static int		count_words(char *s, char c)
 	return (cnt);
 }
 
-static char		*assign_word(char *s, char c)
+static char	*assign_word(char *s, char c)
 {
 	unsigned int	i;
 	unsigned int	len;
@@ -55,7 +67,7 @@ static char		*assign_word(char *s, char c)
 	len = 0;
 	while (s[len] != '\0' && s[len] != c)
 		len++;
-	ret = (char*)malloc(sizeof(char) * (len + 1));
+	ret = (char *)malloc(sizeof(char) * (len + 1));
 	i = 0;
 	while (i < len)
 		ret[i++] = *s++;
@@ -63,7 +75,7 @@ static char		*assign_word(char *s, char c)
 	return (ret);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	unsigned int	nb;
 	unsigned int	i;
@@ -72,9 +84,10 @@ char			**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	ptr = (char*)s;
+	ptr = (char *)s;
 	nb = count_words(ptr, c);
-	if (!(ret = (char**)malloc(sizeof(char*) * (nb + 1))))
+	ret = (char **)malloc(sizeof(char *) * (nb + 1));
+	if (!(ret))
 		return (0);
 	i = 0;
 	while (i < nb)
