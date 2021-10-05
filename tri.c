@@ -17,6 +17,23 @@ stack   *ft_swap(stack *pile)
     return (pile);
 }
 
+stack   *ft_swap_b(stack *pile)
+{
+    stack *element;
+    stack *tmp;
+    
+    tmp = NULL;
+    element = NULL;
+    element = empiler(element, pile->value);
+    tmp = empiler(tmp, pile->next->value);
+    pile->value = tmp->value;
+    pile->next->value = element->value;
+    free(element);
+    free(tmp);
+    printf("sb\n");
+    return (pile);
+}
+
 stack   *ft_add_back(stack **alst, stack *new)
 {
     stack *tmp;
@@ -67,11 +84,6 @@ stack *ft_add_front(stack **alst, stack *new)
 
     tmp = NULL;
     tmp = *alst;
-    /*if(!(*alst))
-    {
-        *alst = new;
-        return (*alst);
-    }*/
     new->next = tmp;
     tmp = new;
     return(tmp);
@@ -149,7 +161,6 @@ stack    *ft_swap_between_tmp(stack *pile_more, int add)
     element = NULL;
     element = empiler(element, add);
     pile_more = ft_add_front(&pile_more, element);
-    printf("pa\n");
     return (pile_more);
 }
 
@@ -171,12 +182,22 @@ stack    *tri_pile(stack *pileA, stack *pileB, int arg)
         pileA = only_three(pileA, arg);
     else if(arg > 3 && arg < 6)
         pileA = only_five(pileA, pileB, arg);
-    else if(arg >= 6 && arg < 100)
+    else if(arg >= 6 && arg <= 10)
         pileA = ft_hundred(pileA);
+    else if(arg > 10 && arg < 22)
+        pileA = ft_less_hundred(pileA);
+    else if(arg == 22)
+        pileA = ft_new_algo(pileA, pileB);
+    else if(arg > 22 && arg < 100)
+        pileA = ft_less_hundred(pileA);
     else if(arg == 100)
-        pileA = ft_opti_hundred(pileA, pileB);
-    else if(arg > 100)
-        pileA = ft_hundred(pileA);
+        pileA = ft_opti_hundred(pileA);
+    else if(arg > 100 && arg < 300)
+        pileA = ft_less_hundred(pileA);
+    else if(arg == 300)
+        pileA = ft_opti_five_hundred(pileA);
+    else if(arg > 300)
+        pileA = ft_less_hundred(pileA);
 
     //printf("\nEtat de la pile A:\n");
     //afficherPile(pileA);
