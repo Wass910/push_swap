@@ -131,6 +131,5 @@ stack	*ft_less_hundred(stack *pileA)
 	pileB = ft_hundred_b(pileB);
 	pileA = ft_hundred(pileA);
 	pileA = ft_norme_for_lesshundred(pileA, pileB);
-	free(pileB);
 	return (pileA);
 }

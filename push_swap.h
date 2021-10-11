@@ -55,3 +55,7 @@ stack   *ft_norme_for_find_litle_less(stack *tmp_elem, stack *element, stack *pi
 stack     *ft_tri_tab_less(stack *tab, int count);
 stack   *ft_norme_for_tritab_less(int count, int tmp, stack *tmp_tab, stack *tab);
 stack   *ft_norme_for_lesshundred(stack *pileA, stack *pileB);
+stack     *ft_tri_tab_five(stack *tab, int count);
+stack   *ft_norme_for_tritab_five(int count, int tmp, stack *tmp_tab, stack *tab);
+stack   *ft_norme_for_find_litle_five(stack *tmp_elem, stack *pileA, stack *tab, int tmp, int count);
+stack   *ft_find_little_five(stack *pileA, int count);
