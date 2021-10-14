@@ -95,6 +95,8 @@ stack	*ft_tri_tab(stack *tab)
 		tmp_tab = ft_free_stack(tmp_tab);
 		count++;
 	}
+	while (tab)
+		tab = ft_free_stack(tab);
 	return (final);
 }
 
@@ -176,7 +178,7 @@ stack	*ft_opti_hundred(stack *pileA)
 		{
 			pileB = ft_swap_between_b(pileB, pileA->value);
 			pileA = ft_free_stack(pileA);
-			tab = tab->next;
+			tab = ft_free_stack(tab);
 		}
 		else
 			pileA = ft_reverse(pileA);

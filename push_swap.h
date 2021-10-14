@@ -53,7 +53,7 @@ stack   *ft_swap_b(stack *pile);
 stack   *ft_find_little_less(stack *pileA, int count);
 stack   *ft_norme_for_find_litle_less(stack *tmp_elem, stack *element, stack *pileA, stack *tab, int tmp);
 stack     *ft_tri_tab_less(stack *tab, int count);
-stack   *ft_norme_for_tritab_less(int count, int tmp, stack *tmp_tab, stack *tab);
+stack   *ft_norme_for_tritab_less(int c, int tmp, stack *tmp_tab, stack *tab);
 stack   *ft_norme_for_lesshundred(stack *pileA, stack *pileB);
 stack     *ft_tri_tab_five(stack *tab, int count);
 stack   *ft_norme_for_tritab_five(int count, int tmp, stack *tmp_tab, stack *tab);

@@ -207,8 +207,8 @@ stack	*tri_pile(stack *pileA, stack *pileB, int arg)
 		pileA = ft_less_hundred(pileA);
 	else if (arg > 300)
 		pileA = ft_new_algo(pileA, pileB);
-	//printf("\nEtat de la pile A:\n");
-	//afficherPile(pileA);
+	printf("\nEtat de la pile A:\n");
+	afficherPile(pileA);
 	free(pileB);
 	return (pileA);
 }

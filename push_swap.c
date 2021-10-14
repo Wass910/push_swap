@@ -25,8 +25,10 @@ stack	*ft_fill_pile(int i, stack *pileA, char **dest)
 			exit(EXIT_FAILURE);
 		}
 		pileA = empiler(pileA, ft_atoi(dest[i]));
+		free(dest[i]);
 		i--;
 	}
+	free(dest);
 	return (pileA);
 }
 
