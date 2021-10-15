@@ -109,7 +109,6 @@ int	main(int argc, char **argv)
 	arg = ft_lstsize(pileA);
 	if ((ft_is_order(pileA)) == 0 )
 	{
-		printf("pile trie\n");
 		clear_stack(pileA);
 		exit(EXIT_FAILURE);
 	}

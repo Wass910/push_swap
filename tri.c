@@ -209,16 +209,10 @@ stack	*tri_pile(stack *pileA, stack *pileB, int arg)
 		pileA = only_five(pileA, pileB, arg);
 	else if (arg >= 6 && arg <= 10)
 		pileA = ft_hundred(pileA);
-	else if (arg > 10 && arg < 100)
-		pileA = ft_less_hundred(pileA);
-	else if (arg == 100)
-		pileA = ft_new_algo(pileA, pileB);
-	else if (arg > 100 && arg < 300)
-		pileA = ft_less_hundred(pileA);
+	else if (arg > 10 && arg <= 300)
+		pileA = ft_new_algo(pileA, pileB, 5);
 	else if (arg > 300)
-		pileA = ft_new_algo(pileA, pileB);
-	//printf("\nEtat de la pile A:\n");
-	//afficherPile(pileA);
+		pileA = ft_new_algo(pileA, pileB, 11);
 	free(pileB);
 	return (pileA);
 }

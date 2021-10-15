@@ -52,7 +52,7 @@ int     ft_morceaux_suite(stack* pile, int tmp);
 int ft_norme_opti_for_i(stack *pile, int i);
 stack   *ft_opti_five_hundred(stack *pileA);
 stack   *ft_opti_hundred_five(stack *pileA);
-stack   *ft_new_algo(stack *pileA, stack *pileB);
+stack   *ft_new_algo(stack *pileA, stack *pileB, int what_position);
 stack   *ft_swap_b(stack *pile);
 stack   *ft_find_little_less(stack *pileA, int count);
 stack   *ft_norme_for_find_litle_less(stack *tmp_elem, stack *element, stack *pileA, stack *tab, int tmp);
