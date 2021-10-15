@@ -27,11 +27,11 @@ int	ft_morceaux(stack *pile, int tmp)
 
 int	ft_norme_opti_for_i(stack *pile, int i)
 {
-	if (pile->value > i)
+	if (pile && pile->value > i)
 		i = pile->value;
 	else
 	{
-		while (pile->value <= i && pile != NULL)
+		while (pile && pile->value <= i && pile != NULL)
 			pile = pile->next;
 		i = pile->value;
 	}
@@ -162,30 +162,80 @@ stack	*ft_norme_for_optihundred(stack *pileA, stack *pileB)
 	return (pileA);
 }
 
-stack	*ft_opti_hundred(stack *pileA)
+stack	*ft_opti_hundred(stack *pileA, stack *pileB)
 {
-	int		i;
-	stack	*tab;
-	stack	*pileB;
+    int count;
+    int i;
+    stack *tab;
+    int size_a;
+    stack   *tmp_pile;
+    int val;
+    
+    count = 0;
+    while(count < 100)
+    {
+        i = 0;
+        val = 0;
+        tmp_pile = pileA;
+        size_a = (ft_lstsize(pileA)) - 1;
+        tab = ft_find_little_five(pileA, size_a);
+        while(i < (ft_lstsize(pileA)) / 2)
+        {
+            tab = ft_reverse_tmp(tab);
+            i++;
+        }
+        i = tab->value;
+        while(i > 1)
+        {
+            tmp_pile = tmp_pile->next;
+            i--;
+        }
+        val = tmp_pile->value;
+        //printf("val = %d\n", val);
+        while(pileA->value > val)
+        {
+            pileA = ft_reverse(pileA);
+        }
+        pileB = ft_swap_between_b(pileB, pileA->value);
+		pileA = ft_free_stack(pileA);
+        tab = ft_free_stack(tab);
+        count++; 
+    }
+    count = 0;
+    while(count < 100)
+    {
+        i = 0;
+        val = 0;
+        tmp_pile = pileB;
+        size_a = (ft_lstsize(pileB)) - 1;
+        tab = ft_find_little_five(pileB, size_a);
+        while(i < (ft_lstsize(pileB)) / 2)
+        {
+            tab = ft_reverse_tmp(tab);
+            i++;
+        }
+        i = tab->value;
+        while(i > 1)
+        {
+            tmp_pile = tmp_pile->next;
+            i--;
+        }
+        val = tmp_pile->value;
+        //printf("val = %d\n", val);
+        while(pileB->value < val)
+        {
+            pileB = ft_reverse_b(pileB);
+        }
+        pileA = ft_swap_between(pileA, pileB->value);
+		pileB = ft_free_stack(pileB);
+        tab = ft_free_stack(tab);
+        count++; 
+    }
+    pileA = ft_hundred(pileA);
+    //printf("\nEtat de la pile A:\n");
+    //afficherPile(pileA);
+    //printf("\nEtat de la pile B:\n");
+    //afficherPile(pileA);
+    return (pileA);
 
-	pileB = NULL;
-	i = 1;
-	tab = ft_find_little(pileA, 44);
-	tab = ft_tri_tab(tab);
-	while (tab)
-	{
-		if (tab->value == i)
-		{
-			pileB = ft_swap_between_b(pileB, pileA->value);
-			pileA = ft_free_stack(pileA);
-			tab = ft_free_stack(tab);
-		}
-		else
-			pileA = ft_reverse(pileA);
-		i++;
-	}
-	pileB = ft_hundred_b(pileB);
-	pileA = ft_hundred(pileA);
-	pileA = ft_norme_for_optihundred(pileA, pileB);
-	return (pileA);
 }

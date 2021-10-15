@@ -53,15 +53,28 @@ int	depiler(stack *pile)
 	return (pile->value);
 }
 
-void	afficherPile(stack *pile)
+void	afficherPile(stack *pileA, stack *pileB, int pivot)
 {
-	if (pile == NULL)
+	if (pileA == NULL && pileB == NULL)
 		exit(EXIT_FAILURE);
-	while (!is_empty_stack(pile))
+	    printf("Pile a --pivot = %d -- PileB\n", pivot);
+	while (!is_empty_stack(pileA) || !is_empty_stack(pileB))
 	{
-		printf("[%d]\n", pile->value);
-		pile = pile->next;
+		if (!is_empty_stack(pileA)){
+		printf("[%d]  ---     ", pileA->value);
+		pileA = pileA->next;
+		} else {
+		printf("        ");
+		}
+		if (!is_empty_stack(pileB)){
+		printf("[%d]\n", pileB->value);
+		pileB = pileB->next;
+		}else {
+		printf("    \n");
+		}
 	}
+		    printf("--------------------------\n");
+
 	return ;
 }
 

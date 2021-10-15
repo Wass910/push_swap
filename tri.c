@@ -60,6 +60,20 @@ stack	*ft_add_back(stack **alst, stack *new)
 	return (tmp);
 }
 
+stack	*ft_reverse_tmp(stack *pile)
+{
+	stack	*element;
+	stack	*tmp;
+
+	tmp = NULL;
+	element = NULL;
+	element = empiler(element, depiler(pile));
+	pile = ft_next_number(pile);
+	tmp = pile;
+	pile = ft_add_back(&tmp, element);
+	return (tmp);
+}
+
 stack	*ft_reverse(stack *pile)
 {
 	stack	*element;
@@ -195,20 +209,16 @@ stack	*tri_pile(stack *pileA, stack *pileB, int arg)
 		pileA = only_five(pileA, pileB, arg);
 	else if (arg >= 6 && arg <= 10)
 		pileA = ft_hundred(pileA);
-	else if (arg > 10 && arg < 60)
-		pileA = ft_less_hundred(pileA);
-	else if (arg == 60)
-		pileA = ft_new_algo(pileA, pileB);
-	else if (arg > 60 && arg < 100)
+	else if (arg > 10 && arg < 100)
 		pileA = ft_less_hundred(pileA);
 	else if (arg == 100)
-		pileA = ft_opti_hundred(pileA);
+		pileA = ft_new_algo(pileA, pileB);
 	else if (arg > 100 && arg < 300)
 		pileA = ft_less_hundred(pileA);
 	else if (arg > 300)
 		pileA = ft_new_algo(pileA, pileB);
-	printf("\nEtat de la pile A:\n");
-	afficherPile(pileA);
+	//printf("\nEtat de la pile A:\n");
+	//afficherPile(pileA);
 	free(pileB);
 	return (pileA);
 }

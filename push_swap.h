@@ -7,7 +7,11 @@ typedef struct StackElement
     struct StackElement       *next;
 }          stack;
 
-void    afficherPile(stack *pile);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
+void    afficherPile(stack *pileA, stack *pileB, int pivot);
 stack   *tri_pile(stack *pileA, stack *pileB, int arg);
 int     depiler(stack *pile);
 stack   *empiler(stack *pile, int nombre);
@@ -30,7 +34,7 @@ stack   *for_five(stack *pileA, stack *pileB);
 stack   *ft_for_two(stack *pileA);
 stack   *ft_parcing_five(stack *pileA, stack *pileB, int tmp);
 stack   *ft_hundred(stack *pileA);
-stack   *ft_opti_hundred(stack *pileA);
+stack   *ft_opti_hundred(stack *pileA, stack *pileB);
 stack   *ft_swap_between_b(stack *pile_more, int add);
 char	**ft_split(char const *s, char c);
 void    ft_verif_double(stack *pile);
@@ -59,3 +63,16 @@ stack     *ft_tri_tab_five(stack *tab, int count);
 stack   *ft_norme_for_tritab_five(int count, int tmp, stack *tmp_tab, stack *tab);
 stack   *ft_norme_for_find_litle_five(stack *tmp_elem, stack *pileA, stack *tab, int tmp, int count);
 stack   *ft_find_little_five(stack *pileA, int count);
+char	*ft_strjoin_free(char *s1, char *s2, int f);
+int		ft_count(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+char	*ft_substr(char *s, int start, int len);
+char	*ft_strdup(char *s);
+void	*ft_calloc(int count, int size);
+char	*ft_strchr(char *s, int c);
+int		ft_strlen(char *s);
+int		read_line(int fd, char **dest);
+char	*ft_no_leaks(char *dest, int i);
+int		get_next_line(int fd, char **line);
+stack *ft_second_algo(stack *pileA);
+stack	*ft_reverse_tmp(stack *pile);
