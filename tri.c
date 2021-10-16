@@ -228,6 +228,6 @@ stack	*tri_pile(stack *pileA, stack *pileB, int arg)
 		pileA = ft_parcing_all(pileA, pileB, 5);
 	else if (arg > 300)
 		pileA = ft_parcing_all(pileA, pileB, 11);
-	free(pileB);
+	//free(pileB);
 	return (pileA);
 }

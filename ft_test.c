@@ -41,6 +41,8 @@ stack   *ft_quick_sort_a(stack *pileA, stack *pileB, int i)
             pileA = ft_reverse(pileA);
         pileB = ft_swap_between_b(pileB, pileA->value);
 		pileA = ft_free_stack(pileA);
+        while(tab)
+            tab = ft_free_stack(tab);
         count++; 
     }
     return (pileB);
@@ -64,9 +66,10 @@ stack   *ft_quick_sort_b(stack *pileA, stack *pileB, int i, int what_pivot)
             pileB = ft_reverse_b(pileB);
         pileA = ft_swap_between(pileA, pileB->value);
 		pileB = ft_free_stack(pileB);
+        while(tab)
+            tab = ft_free_stack(tab);
         count++; 
     }
-    afficherPile(pileA, pileB, 49);
     return (pileA);
 }
 
@@ -82,9 +85,6 @@ stack   *ft_parcing_all(stack *pileA, stack *pileB, int what_pivot)
     pileB = ft_quick_sort_a(pileA, pileB, i);
     tmp_pileA = ft_quick_sort_b(tmp_pileA,pileB, i, what_pivot);
     tmp_pileA = ft_hundred(tmp_pileA);
-    
-    while(pileA)
-        pileA = ft_free_stack(pileA);
     //afficherPile(tmp_pileA, tab, val);
     return (tmp_pileA);
 }

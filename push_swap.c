@@ -113,8 +113,8 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	pileA = tri_pile(pileA, pileB, arg);
-	pileA = clear_stack(pileA);
-    fflush(stdout);
-	system("leaks a.out | grep 'Process'");
+	//pileA = clear_stack(pileA);
+    //fflush(stdout);
+	//system("leaks a.out | grep 'Process'");
 	return (0);
 }
