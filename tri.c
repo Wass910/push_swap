@@ -89,6 +89,21 @@ stack	*ft_reverse(stack *pile)
 	return (tmp);
 }
 
+stack	*ft_reverse2(stack *pile)
+{
+	stack	*element;
+	stack	*tmp;
+
+	tmp = NULL;
+	element = NULL;
+	element = empiler(element, depiler(pile));
+	pile = pile->next;
+	tmp = pile;
+	pile = ft_add_back(&tmp, element);
+	printf("ra\n");
+	return (tmp);
+}
+
 stack	*ft_reverse_b(stack *pile)
 {
 	stack	*element;
@@ -210,9 +225,9 @@ stack	*tri_pile(stack *pileA, stack *pileB, int arg)
 	else if (arg >= 6 && arg <= 10)
 		pileA = ft_hundred(pileA);
 	else if (arg > 10 && arg <= 300)
-		pileA = ft_new_algo(pileA, pileB, 5);
+		pileA = ft_parcing_all(pileA, pileB, 5);
 	else if (arg > 300)
-		pileA = ft_new_algo(pileA, pileB, 11);
+		pileA = ft_parcing_all(pileA, pileB, 11);
 	free(pileB);
 	return (pileA);
 }
