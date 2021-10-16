@@ -216,18 +216,17 @@ stack	*ft_swap_between_b(stack *pile_more, int add)
 	return (pile_more);
 }
 
-stack	*tri_pile(stack *pileA, stack *pileB, int arg)
+stack	*tri_pile(stack *pileA, stack *pile_b, int arg)
 {
 	if (arg == 2 || arg == 3)
 		pileA = only_three(pileA, arg);
 	else if (arg > 3 && arg < 6)
-		pileA = only_five(pileA, pileB, arg);
+		pileA = only_five(pileA, pile_b, arg);
 	else if (arg >= 6 && arg <= 10)
 		pileA = ft_hundred(pileA);
 	else if (arg > 10 && arg <= 300)
-		pileA = ft_parcing_all(pileA, pileB, 5);
+		pileA = ft_parcing_all(pileA, pile_b, 5);
 	else if (arg > 300)
-		pileA = ft_parcing_all(pileA, pileB, 11);
-	//free(pileB);
+		pileA = ft_parcing_all(pileA, pile_b, 11);
 	return (pileA);
 }

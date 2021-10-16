@@ -40,7 +40,7 @@ fclean: clean
 .PHONY: all clean fclean re
 #include "push_swap.h"
 
-stack   *ft_new_algo(stack *pileA, stack *pileB)
+stack   *ft_new_algo(stack *pileA, stack *pile_b)
 {
     int count;
     int i;
@@ -52,13 +52,13 @@ stack   *ft_new_algo(stack *pileA, stack *pileB)
     while(count < 10)
     {
         i = 1;
-        tab = ft_find_little_five(pileA, size_a);
+        tab = ft_index(pileA, size_a);
         tab = ft_tri_tab_five(tab, size_a);
         while (tab)
         {
             if(tab->value == i)
             {
-                pileB = ft_swap_between_b(pileB, pileA->value);
+                pile_b = ft_swap_between_b(pile_b, pileA->value);
                 pileA = ft_free_stack(pileA);
                 tab = tab->next;
             }
@@ -75,25 +75,25 @@ stack   *ft_new_algo(stack *pileA, stack *pileB)
         while(pileA)
         {
             pileA = ft_reverse_last(pileA);
-            pileB = ft_swap_between_b(pileB, pileA->value);
+            pile_b = ft_swap_between_b(pile_b, pileA->value);
             pileA = ft_free_stack(pileA);
-            pileB = ft_reverse_b(pileB);
+            pile_b = ft_reverse_b(pile_b);
         }
         i = 0;
         while(i < (size_a + 1))
         {
-            pileA = ft_swap_between(pileA, pileB->value);
-            pileB = ft_free_stack(pileB);
+            pileA = ft_swap_between(pileA, pile_b->value);
+            pile_b = ft_free_stack(pile_b);
             i++;
         }
         count++;
     }
-    while(pileB)
+    while(pile_b)
     {
-        pileA = ft_swap_between(pileA, pileB->value);
-        pileB = ft_free_stack(pileB);
+        pileA = ft_swap_between(pileA, pile_b->value);
+        pile_b = ft_free_stack(pile_b);
     }
     //printf("\nEtat de la pile A:\n");
-    //afficherPile(pileB);
+    //afficherPile(pile_b);
     return (pileA);
 }

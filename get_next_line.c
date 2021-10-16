@@ -6,7 +6,7 @@
 /*   By: idhiba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 18:17:13 by idhiba            #+#    #+#             */
-/*   Updated: 2020/09/24 14:45:39 by idhiba           ###   ########.fr       */
+/*   Updated: 2021/10/16 18:18:11 by idhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char	*ft_strdup(char *s)
 	i = 0;
 	while (s[i] != '\0')
 		i++;
-	if (!(str = malloc(sizeof(*str) * (i + 1))))
+	str = malloc(sizeof(*str) * (i + 1));
+	if (str == NULL)
 		return (NULL);
 	while (e < i)
 	{
@@ -38,7 +39,7 @@ char	*ft_strdup(char *s)
 	return (str);
 }
 
-int		ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	int	i;
 
@@ -50,20 +51,27 @@ int		ft_strlen(char *s)
 	return (i);
 }
 
-int		read_line(int fd, char **dest)
+int	read_line(int fd, char **dest)
 {
 	char	*buff;
 	int		ret;
+	char	*tmp;
 
-	if (!(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buff == NULL)
 		return (-1);
-	while (!ft_strchr(*dest, '\n') && (ret = read(fd, buff, BUFFER_SIZE)))
+	tmp = ft_strchr(*dest, '\n');
+	ret = read(fd, buff, BUFFER_SIZE);
+	while (tmp == NULL && ret)
 	{
 		if (ret == -1)
 			return (-1);
 		buff[ret] = '\0';
-		if ((*dest = ft_strjoin_free(*dest, buff, 1)) == NULL)
+		*dest = ft_strjoin_free(*dest, buff, 1);
+		if (*dest == NULL)
 			return (-1);
+		tmp = ft_strchr(*dest, '\n');
+		ret = read(fd, buff, BUFFER_SIZE);
 	}
 	free(buff);
 	return (ret);
@@ -87,7 +95,7 @@ char	*ft_no_leaks(char *dest, int i)
 	return (dest);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*dest;
 	int			ret;
@@ -98,7 +106,8 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (!(dest))
 		dest = ft_calloc(1, 1);
-	if ((ret = read_line(fd, &dest)) == -1)
+	ret = read_line(fd, &dest);
+	if (ret == -1)
 		return (-1);
 	while (dest[i] != '\n' && dest[i] != '\0')
 		i++;

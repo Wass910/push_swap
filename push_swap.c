@@ -93,28 +93,26 @@ int	ft_is_order(stack *pileA)
 
 int	main(int argc, char **argv)
 {
-	stack	*pileA;
-	stack	*pileB;
+	stack	*pile_a;
+	stack	*pile_b;
 	int		arg;
 	char	**dest;
 
 	arg = 0;
-	pileA = NULL;
-	pileB = NULL;
+	pile_a = NULL;
+	pile_b = NULL;
 	if (argc <= 2)
-		pileA = ft_argc_min(argv, pileA);
+		pile_a = ft_argc_min(argv, pile_a);
 	else
-		pileA = ft_argc_max(argv, argc, pileA);
-	ft_verif_double(pileA);
-	arg = ft_lstsize(pileA);
-	if ((ft_is_order(pileA)) == 0 )
+		pile_a = ft_argc_max(argv, argc, pile_a);
+	ft_verif_double(pile_a);
+	arg = ft_lstsize(pile_a);
+	if ((ft_is_order(pile_a)) == 0 )
 	{
-		clear_stack(pileA);
+		clear_stack(pile_a);
 		exit(EXIT_FAILURE);
 	}
-	pileA = tri_pile(pileA, pileB, arg);
-	//pileA = clear_stack(pileA);
-    //fflush(stdout);
-	//system("leaks a.out | grep 'Process'");
+	pile_a = tri_pile(pile_a, pile_b, arg);
+	pile_a = clear_stack(pile_a);
 	return (0);
 }

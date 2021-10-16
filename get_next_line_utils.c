@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: idhiba <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/16 18:28:17 by idhiba            #+#    #+#             */
+/*   Updated: 2021/10/16 18:28:18 by idhiba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
@@ -14,7 +25,8 @@ char	*ft_substr(char *s, int start, int len)
 	if (!s || !*s || start > ft_strlen(s))
 		return (ft_strdup(""));
 	i = 0;
-	if (!(str = malloc(sizeof(*str) * (len + 1))))
+	str = malloc(sizeof(*str) * (len + 1));
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	while (i < len)
@@ -36,7 +48,8 @@ void	*ft_calloc(int count, int size)
 	i = 0;
 	if (count == 0)
 		return (ft_strdup(""));
-	if (!(result = malloc(count * size)))
+	result = malloc(count * size);
+	if (result == NULL)
 		return (NULL);
 	tmp = result;
 	n = count * size;
@@ -70,10 +83,10 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-int		ft_count(char *s1, char *s2)
+int	ft_count(char *s1, char *s2)
 {
-	int i;
-	int e;
+	int	i;
+	int	e;
 
 	i = 0;
 	e = 0;
@@ -97,7 +110,8 @@ char	*ft_strjoin_free(char *s1, char *s2, int f)
 	f = 0;
 	e = 0;
 	i = ft_count(s1, s2);
-	if (!(str = malloc(sizeof(*str) * i)))
+	str = malloc(sizeof(*str) * i);
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	while (s1[i] != '\0')

@@ -55,22 +55,22 @@ stack	*ft_hundred(stack *pileA)
 {
 	int		i;
 	stack	*element;
-	stack	*pileB;
+	stack	*pile_b;
 
-	pileB = NULL;
+	pile_b = NULL;
 	element = pileA;
 	while (pileA)
 	{
 		i = ft_what_position(1, 1, element);
 		pileA = ft_tri_hundred(pileA, ft_lstsize(pileA) + 1, i);
-		pileB = ft_swap_between_b(pileB, pileA->value);
+		pile_b = ft_swap_between_b(pile_b, pileA->value);
 		pileA = ft_free_stack(pileA);
 		element = pileA;
 	}
-	while (pileB)
+	while (pile_b)
 	{
-		pileA = ft_swap_between(pileA, pileB->value);
-		pileB = ft_free_stack(pileB);
+		pileA = ft_swap_between(pileA, pile_b->value);
+		pile_b = ft_free_stack(pile_b);
 	}
 	return (pileA);
 }
