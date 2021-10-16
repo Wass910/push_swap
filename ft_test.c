@@ -75,12 +75,10 @@ stack   *ft_quick_sort_b(stack *pileA, stack *pileB, int i, int what_pivot)
 
 stack   *ft_parcing_all(stack *pileA, stack *pileB, int what_pivot)
 {
-    int count;
-    int i;
-    stack *tab = NULL;
-    stack   *tmp_pileA = NULL;
-    int val = 0;
+    int     i;
+    stack   *tmp_pileA ;
 
+    tmp_pileA = NULL;
     i = ft_lstsize(pileA);
     pileB = ft_quick_sort_a(pileA, pileB, i);
     tmp_pileA = ft_quick_sort_b(tmp_pileA,pileB, i, what_pivot);
