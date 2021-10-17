@@ -88,7 +88,7 @@ stack	*ft_quick_sort_b(stack *pileA, stack *pile_b, int i, int pivot)
 stack	*ft_parcing_all(stack *pileA, stack *pile_b, int what_pivot)
 {
 	int		i;
-	stack	*tmp_pilea ;
+	stack	*tmp_pilea;
 
 	tmp_pilea = NULL;
 	i = ft_lstsize(pileA);

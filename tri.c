@@ -25,7 +25,7 @@ stack	*ft_swap(stack *pile)
 	pile->next->value = element->value;
 	free(element);
 	free(tmp);
-	printf("sa\n");
+	ft_putstr("sa\n",0);
 	return (pile);
 }
 
@@ -42,7 +42,23 @@ stack	*ft_swap_b(stack *pile)
 	pile->next->value = element->value;
 	free(element);
 	free(tmp);
-	printf("sb\n");
+	ft_putstr("sb\n",0);
+	return (pile);
+}
+
+stack	*ft_swap_check(stack *pile)
+{
+	stack	*element;
+	stack	*tmp;
+
+	tmp = NULL;
+	element = NULL;
+	element = empiler(element, pile->value);
+	tmp = empiler(tmp, pile->next->value);
+	pile->value = tmp->value;
+	pile->next->value = element->value;
+	free(element);
+	free(tmp);
 	return (pile);
 }
 
@@ -85,22 +101,7 @@ stack	*ft_reverse(stack *pile)
 	pile = ft_next_number(pile);
 	tmp = pile;
 	pile = ft_add_back(&tmp, element);
-	printf("ra\n");
-	return (tmp);
-}
-
-stack	*ft_reverse2(stack *pile)
-{
-	stack	*element;
-	stack	*tmp;
-
-	tmp = NULL;
-	element = NULL;
-	element = empiler(element, depiler(pile));
-	pile = pile->next;
-	tmp = pile;
-	pile = ft_add_back(&tmp, element);
-	printf("ra\n");
+	ft_putstr("ra\n",0);
 	return (tmp);
 }
 
@@ -115,7 +116,7 @@ stack	*ft_reverse_b(stack *pile)
 	pile = ft_next_number(pile);
 	tmp = pile;
 	pile = ft_add_back(&tmp, element);
-	printf("rb\n");
+	ft_putstr("rb\n",0);
 	return (tmp);
 }
 
@@ -153,7 +154,7 @@ stack	*ft_reverse_last(stack *pile)
 		element = ft_next_number(element);
 	}
 	final = ft_add_front(&final, tmp);
-	printf("rra\n");
+	ft_putstr("rra\n",0);
 	return (final);
 }
 
@@ -180,7 +181,33 @@ stack	*ft_reverse_last_b(stack *pile)
 		element = ft_next_number(element);
 	}
 	final = ft_add_front(&final, tmp);
-	printf("rrb\n");
+	ft_putstr("rrb\n",0);
+	return (final);
+}
+
+stack	*ft_reverse_last_check(stack *pile)
+{
+	stack	*element;
+	stack	*tmp;
+	stack	*final;
+
+	final = NULL;
+	tmp = NULL;
+	element = NULL;
+	tmp = pile;
+	while (tmp->next)
+		tmp = tmp->next;
+	while (pile->next)
+	{
+		element = empiler(element, pile->value);
+		pile = ft_next_number(pile);
+	}
+	while (element)
+	{
+		final = empiler(final, element->value);
+		element = ft_next_number(element);
+	}
+	final = ft_add_front(&final, tmp);
 	return (final);
 }
 
@@ -191,7 +218,7 @@ stack	*ft_swap_between(stack *pile_more, int add)
 	element = NULL;
 	element = empiler(element, add);
 	pile_more = ft_add_front(&pile_more, element);
-	printf("pa\n");
+	ft_putstr("pa\n",0);
 	return (pile_more);
 }
 
@@ -212,7 +239,7 @@ stack	*ft_swap_between_b(stack *pile_more, int add)
 	element = NULL;
 	element = empiler(element, add);
 	pile_more = ft_add_front(&pile_more, element);
-	printf("pb\n");
+	ft_putstr("pb\n",0);
 	return (pile_more);
 }
 

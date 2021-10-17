@@ -1,5 +1,8 @@
-#include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 typedef struct StackElement
 {
@@ -63,20 +66,24 @@ stack     *ft_tri_tab_five(stack *tab, int count);
 stack   *ft_norme_for_tritab_five(int count, int tmp, stack *tmp_tab, stack *tab);
 stack   *ft_norme_for_index(stack *pileA, stack *tab, int tmp, int count);
 stack   *ft_index(stack *pileA, int count);
-char	*ft_strjoin_free(char *s1, char *s2);
+char	*ft_strjoin_free(char *s1, char *s2, int f);
 int		ft_count(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
-char	*ft_substr(char *s, int len);
+char    *ft_substr(char *s, int start, int len);
 char	*ft_strdup(char *s);
-void	*ft_calloc(int count, int size);
+void    *ft_calloc(int count, int size);
 char	*ft_strchr(char *s, int c);
 int		ft_strlen(char *s);
 int		read_line(int fd, char **dest);
 char	*ft_no_leaks(char *dest, int i);
-int		get_next_line( char **line);
+int		get_next_line(int fd, char **line);
 stack *ft_second_algo(stack *pileA);
 stack	*ft_reverse_tmp(stack *pile);
 stack	*ft_reverse2(stack *pile);
 stack	*ft_argc_max(char **argv, int argc, stack *pileA);
 stack	*ft_argc_min(char **argv, stack *pileA);
 int	is_empty_stack(stack *st);
+void	ft_putchar(char c);
+char	*ft_putstr(char *s, int n);
+stack	*ft_swap_check(stack *pile);
+stack	*ft_reverse_last_check(stack *pile);
