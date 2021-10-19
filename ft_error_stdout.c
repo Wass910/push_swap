@@ -87,7 +87,15 @@ int	depiler(t_stack *pile)
 void	ft_result_checker(t_stack *pile_a, t_stack *pile_b)
 {
 	if ((ft_is_order(pile_a)) == 0 && !pile_b)
+	{
+		pile_a = clear_t_stack(pile_a);
+		pile_b = clear_t_stack(pile_b);
 		printf("OK");
+	}
 	else
+	{
+		pile_a = clear_t_stack(pile_a);
+		pile_b = clear_t_stack(pile_b);
 		printf("KO");
+	}
 }

@@ -54,7 +54,7 @@ int	read_line(int fd, char **dest)
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buff == NULL)
 		return (-1);
-	while (!ft_strchr(*dest, '\n'))
+	while (!ft_strchr(*dest, '\n') && ret > 0)
 	{
 		ret = read(fd, buff, BUFFER_SIZE);
 		if (ret == -1)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: idhiba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 10:51:15 by idhiba            #+#    #+#             */
-/*   Updated: 2021/10/19 10:59:40 by idhiba           ###   ########.fr       */
+/*   Created: 2021/10/19 18:25:15 by idhiba            #+#    #+#             */
+/*   Updated: 2021/10/19 18:25:58 by idhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_push(t_stack *pile_a, t_stack *pile_b, char *line)
 {
 	if (ft_cmp(line, "pa\n") == 0)
 	{
-		if (pile_b != 0)
+		if (pile_b != NULL)
 		{
 			return (1);
 		}
@@ -67,7 +67,7 @@ t_stack	*ft_check(t_stack *pile_a, t_stack *pile_b)
 		if (ft_push(pile_a, pile_b, line) == 1)
 		{
 			pile_a = ft_swap_between_tmp(pile_a, pile_b->value);
-			pile_b = pile_b->next;
+			pile_b = ft_free_t_stack(pile_b);
 		}
 		else if (ft_push(pile_a, pile_b, line) == 2)
 		{
@@ -79,6 +79,7 @@ t_stack	*ft_check(t_stack *pile_a, t_stack *pile_b)
 		free(line);
 		ret = get_next_line(0, &line);
 	}
+	free(line);
 	ft_result_checker(pile_a, pile_b);
 	return (pile_a);
 }
@@ -90,6 +91,8 @@ int	main(int argc, char **argv)
 
 	pile_a = NULL;
 	pile_b = NULL;
+	if (argc == 1 || argc == 2)
+		exit(EXIT_FAILURE);
 	if (argc <= 2)
 		pile_a = ft_argc_min(argv, pile_a);
 	else
