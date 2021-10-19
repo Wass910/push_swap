@@ -5,17 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: idhiba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 18:28:17 by idhiba            #+#    #+#             */
-/*   Updated: 2021/10/16 18:28:18 by idhiba           ###   ########.fr       */
+/*   Created: 2021/10/19 11:10:09 by idhiba            #+#    #+#             */
+/*   Updated: 2021/10/19 11:10:54 by idhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <fcntl.h>
 
 char	*ft_substr(char *s, int start, int len)
 {
@@ -85,8 +80,8 @@ char	*ft_strchr(char *s, int c)
 
 int	ft_count(char *s1, char *s2)
 {
-	int	i;
-	int	e;
+	int		i;
+	int		e;
 
 	i = 0;
 	e = 0;

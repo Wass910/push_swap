@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-stack	*ft_norme_for_index(stack *pileA, stack *tab, int tmp, int count)
+t_stack	*ft_norme_for_index(t_stack *pile_a, t_stack *tab, int tmp, int count)
 {
 	int		pos;
-	stack	*element;
-	stack	*tmp_elem;
+	t_stack	*element;
+	t_stack	*tmp_elem;
 
-	element = pileA;
-	tmp_elem = pileA;
+	element = pile_a;
+	tmp_elem = pile_a;
 	while (count > 0)
 	{
 		pos = 1;
@@ -29,32 +29,32 @@ stack	*ft_norme_for_index(stack *pileA, stack *tab, int tmp, int count)
 			pos++;
 			element = element->next;
 		}
-		element = pileA;
+		element = pile_a;
 		tab = empiler(tab, pos);
 		count--;
 	}
 	return (tab);
 }
 
-stack	*ft_index(stack *pileA, int count)
+t_stack	*ft_index(t_stack *pile_a, int count)
 {
-	stack	*tmp_elem;
-	stack	*tab;
+	t_stack	*tmp_elem;
+	t_stack	*tab;
 	int		tmp;
 	int		pos;
 
 	tab = NULL;
-	tmp_elem = pileA;
+	tmp_elem = pile_a;
 	tmp = tmp_elem->value;
 	tmp = ft_morceaux(tmp_elem, tmp);
 	pos = 1;
-	tmp_elem = pileA;
+	tmp_elem = pile_a;
 	while (tmp_elem->value != tmp)
 	{
 		pos++;
 		tmp_elem = tmp_elem->next;
 	}
 	tab = empiler(tab, pos);
-	tab = ft_norme_for_index(pileA, tab, tmp, count);
+	tab = ft_norme_for_index(pile_a, tab, tmp, count);
 	return (tab);
 }

@@ -12,11 +12,17 @@
 
 #include "push_swap.h"
 
+void	error_and_exit(void)
+{
+	ft_putstr("ERROR");
+	exit(EXIT_FAILURE);
+}
+
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	nb;
-	int	signe;
+	int			i;
+	long int	nb;
+	int			signe;
 
 	signe = 1;
 	nb = 0;
@@ -34,6 +40,8 @@ int	ft_atoi(char *str)
 		nb = nb * 10 + str[i] - '0';
 		i++;
 	}
+	if (nb > INT_MAX)
+		error_and_exit();
 	return (nb * signe);
 }
 
@@ -42,27 +50,14 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-char	*ft_putstr(char *s, int n)
+void	ft_putstr(char *s)
 {
 	int			i;
-	static char	dest[2333333];
-	static int ret = 0;
 
 	i = 0;
-	//if (!(dest))
-    //    dest = ft_calloc(1, 1);
-	if (n == 1)
-		return dest;
 	while (s[i] != '\0')
 	{
-		write(1, &s[i], 1);
-		dest[ret] = s[i];
-		ret++;
+		ft_putchar(s[i]);
 		i++;
 	}
-	//dest[ret] = '\0';
-	if (n == 1)
-		return dest;
-	//printf("%s\n", dest);
-	return (NULL);
 }

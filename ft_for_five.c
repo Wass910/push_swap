@@ -12,38 +12,38 @@
 
 #include "push_swap.h"
 
-stack	*ft_parcing_five(stack *pileA, stack *pile_b, int tmp)
+t_stack	*ft_parcing_five(t_stack *pile_a, t_stack *pile_b, int tmp)
 {
 	if (tmp == 3)
 	{
-		pileA = ft_reverse_last(pileA);
-		pileA = ft_swap_between(pileA, pile_b->value);
-		pileA = ft_reverse(pileA);
-		pileA = ft_reverse(pileA);
+		pile_a = ft_reverse_last(pile_a);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+		pile_a = ft_reverse(pile_a);
+		pile_a = ft_reverse(pile_a);
 	}
 	else if (tmp == 2)
 	{
-		pileA = ft_reverse(pileA);
-		pileA = ft_swap_between(pileA, pile_b->value);
-		pileA = ft_swap(pileA);
-		pileA = ft_reverse_last(pileA);
+		pile_a = ft_reverse(pile_a);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+		pile_a = ft_swap(pile_a);
+		pile_a = ft_reverse_last(pile_a);
 	}
 	else if (tmp == 1)
 	{
-		pileA = ft_swap_between(pileA, pile_b->value);
-		pileA = ft_swap(pileA);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+		pile_a = ft_swap(pile_a);
 	}
 	else if (tmp == 0)
-		pileA = ft_swap_between(pileA, pile_b->value);
-	return (pileA);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+	return (pile_a);
 }
 
-stack	*for_five(stack *pileA, stack *pile_b)
+t_stack	*for_five(t_stack *pile_a, t_stack *pile_b)
 {
-	stack	*element;
+	t_stack	*element;
 	int		tmp;
 
-	element = pileA;
+	element = pile_a;
 	tmp = 0;
 	while (pile_b->value > element->value && tmp < 3)
 	{
@@ -52,35 +52,35 @@ stack	*for_five(stack *pileA, stack *pile_b)
 	}
 	if (element->value < pile_b->value)
 	{
-		pileA = ft_swap_between(pileA, pile_b->value);
-		pileA = ft_reverse(pileA);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+		pile_a = ft_reverse(pile_a);
 	}
 	else
-		pileA = ft_parcing_five(pileA, pile_b, tmp);
-	return (pileA);
+		pile_a = ft_parcing_five(pile_a, pile_b, tmp);
+	return (pile_a);
 }
 
-stack	*only_five(stack *pileA, stack *pile_b, int arg)
+t_stack	*only_five(t_stack *pile_a, t_stack *pile_b, int arg)
 {
-	stack	*element;
+	t_stack	*element;
 	int		tmp;
 
 	tmp = 0;
 	if (arg == 4)
 	{
-		pileA = for_four(pileA, pile_b);
-		return (pileA);
+		pile_a = for_four(pile_a, pile_b);
+		return (pile_a);
 	}
-	pile_b = ft_swap_between_b(pile_b, pileA->value);
-	pileA = ft_free_stack(pileA);
-	pile_b = ft_swap_between_b(pile_b, pileA->value);
-	pileA = ft_free_stack(pileA);
-	pileA = only_three(pileA, arg);
-	element = pileA;
-	pileA = ft_for_four(pileA, pile_b, element);
-	pile_b = ft_free_stack(pile_b);
+	pile_b = ft_swap_between_b(pile_b, pile_a->value);
+	pile_a = ft_free_t_stack(pile_a);
+	pile_b = ft_swap_between_b(pile_b, pile_a->value);
+	pile_a = ft_free_t_stack(pile_a);
+	pile_a = only_three(pile_a, arg);
+	element = pile_a;
+	pile_a = ft_for_four(pile_a, pile_b, element);
+	pile_b = ft_free_t_stack(pile_b);
 	if (arg == 5)
-		pileA = for_five(pileA, pile_b);
-	pile_b = ft_free_stack(pile_b);
-	return (pileA);
+		pile_a = for_five(pile_a, pile_b);
+	pile_b = ft_free_t_stack(pile_b);
+	return (pile_a);
 }

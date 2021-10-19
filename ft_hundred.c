@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: idhiba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 15:19:05 by idhiba            #+#    #+#             */
-/*   Updated: 2021/10/05 15:19:13 by idhiba           ###   ########.fr       */
+/*   Created: 2021/10/19 10:49:31 by idhiba            #+#    #+#             */
+/*   Updated: 2021/10/19 10:49:35 by idhiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-stack	*ft_tri_hundred(stack *pileA, int pos, int i)
+t_stack	*ft_tri_hundred(t_stack *pile_a, int pos, int i)
 {
 	if ((pos / 2) <= i)
 	{
 		while (i < pos)
 		{
-			pileA = ft_reverse_last(pileA);
+			pile_a = ft_reverse_last(pile_a);
 			i++;
 		}
 	}
@@ -26,14 +26,14 @@ stack	*ft_tri_hundred(stack *pileA, int pos, int i)
 	{
 		while (i > 1)
 		{
-			pileA = ft_reverse(pileA);
+			pile_a = ft_reverse(pile_a);
 			i--;
 		}
 	}
-	return (pileA);
+	return (pile_a);
 }
 
-int	ft_what_position(int i, int pos, stack *element)
+int	ft_what_position(int i, int pos, t_stack *element)
 {
 	int	tmp;
 
@@ -51,26 +51,26 @@ int	ft_what_position(int i, int pos, stack *element)
 	return (i);
 }
 
-stack	*ft_hundred(stack *pileA)
+t_stack	*ft_hundred(t_stack *pile_a)
 {
 	int		i;
-	stack	*element;
-	stack	*pile_b;
+	t_stack	*element;
+	t_stack	*pile_b;
 
 	pile_b = NULL;
-	element = pileA;
-	while (pileA)
+	element = pile_a;
+	while (pile_a)
 	{
 		i = ft_what_position(1, 1, element);
-		pileA = ft_tri_hundred(pileA, ft_lstsize(pileA) + 1, i);
-		pile_b = ft_swap_between_b(pile_b, pileA->value);
-		pileA = ft_free_stack(pileA);
-		element = pileA;
+		pile_a = ft_tri_hundred(pile_a, ft_lstsize(pile_a) + 1, i);
+		pile_b = ft_swap_between_b(pile_b, pile_a->value);
+		pile_a = ft_free_t_stack(pile_a);
+		element = pile_a;
 	}
 	while (pile_b)
 	{
-		pileA = ft_swap_between(pileA, pile_b->value);
-		pile_b = ft_free_stack(pile_b);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+		pile_b = ft_free_t_stack(pile_b);
 	}
-	return (pileA);
+	return (pile_a);
 }

@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int	ft_calculate_pivot(stack *pile, stack *tab, int size)
+int	ft_calculate_pivot(t_stack *pile, t_stack *tab, int size)
 {
 	int		i;
-	stack	*tmp_pile;
-	stack	*tmp_tab;
+	t_stack	*tmp_pile;
+	t_stack	*tmp_tab;
 
 	i = 0;
 	tmp_pile = pile;
@@ -35,10 +35,10 @@ int	ft_calculate_pivot(stack *pile, stack *tab, int size)
 	return (tmp_pile->value);
 }
 
-stack	*ft_quick_sort_a(stack *pileA, stack *pile_b, int i)
+t_stack	*ft_quick_sort_a(t_stack *pile_a, t_stack *pile_b, int i)
 {
 	int		count;
-	stack	*tab;
+	t_stack	*tab;
 	int		val;
 	int		size_a;
 
@@ -46,24 +46,24 @@ stack	*ft_quick_sort_a(stack *pileA, stack *pile_b, int i)
 	while (count < i)
 	{
 		val = 0;
-		size_a = (ft_lstsize(pileA)) - 1;
-		tab = ft_index(pileA, size_a);
-		val = ft_calculate_pivot(pileA, tab, (ft_lstsize(pileA)) / 2);
-		while (pileA->value > val)
-			pileA = ft_reverse(pileA);
-		pile_b = ft_swap_between_b(pile_b, pileA->value);
-		pileA = ft_free_stack(pileA);
+		size_a = (ft_lstsize(pile_a)) - 1;
+		tab = ft_index(pile_a, size_a);
+		val = ft_calculate_pivot(pile_a, tab, (ft_lstsize(pile_a)) / 2);
+		while (pile_a->value > val)
+			pile_a = ft_reverse(pile_a);
+		pile_b = ft_swap_between_b(pile_b, pile_a->value);
+		pile_a = ft_free_t_stack(pile_a);
 		while (tab)
-			tab = ft_free_stack(tab);
+			tab = ft_free_t_stack(tab);
 		count++;
 	}
 	return (pile_b);
 }
 
-stack	*ft_quick_sort_b(stack *pileA, stack *pile_b, int i, int pivot)
+t_stack	*ft_quick_sort_b(t_stack *pile_a, t_stack *pile_b, int i, int pivot)
 {
 	int		count;
-	stack	*tab;
+	t_stack	*tab;
 	int		val;
 	int		size_a;
 
@@ -76,24 +76,24 @@ stack	*ft_quick_sort_b(stack *pileA, stack *pile_b, int i, int pivot)
 		val = ft_calculate_pivot(pile_b, tab, (ft_lstsize(pile_b)) / pivot);
 		while (pile_b->value < val)
 			pile_b = ft_reverse_b(pile_b);
-		pileA = ft_swap_between(pileA, pile_b->value);
-		pile_b = ft_free_stack(pile_b);
+		pile_a = ft_swap_between(pile_a, pile_b->value);
+		pile_b = ft_free_t_stack(pile_b);
 		while (tab)
-			tab = ft_free_stack(tab);
+			tab = ft_free_t_stack(tab);
 		count++;
 	}
-	return (pileA);
+	return (pile_a);
 }
 
-stack	*ft_parcing_all(stack *pileA, stack *pile_b, int what_pivot)
+t_stack	*ft_parcing_all(t_stack *pile_a, t_stack *pile_b, int what_pivot)
 {
 	int		i;
-	stack	*tmp_pilea;
+	t_stack	*tmp_pile_a;
 
-	tmp_pilea = NULL;
-	i = ft_lstsize(pileA);
-	pile_b = ft_quick_sort_a(pileA, pile_b, i);
-	tmp_pilea = ft_quick_sort_b(tmp_pilea, pile_b, i, what_pivot);
-	tmp_pilea = ft_hundred(tmp_pilea);
-	return (tmp_pilea);
+	tmp_pile_a = NULL;
+	i = ft_lstsize(pile_a);
+	pile_b = ft_quick_sort_a(pile_a, pile_b, i);
+	tmp_pile_a = ft_quick_sort_b(tmp_pile_a, pile_b, i, what_pivot);
+	tmp_pile_a = ft_hundred(tmp_pile_a);
+	return (tmp_pile_a);
 }

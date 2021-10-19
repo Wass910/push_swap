@@ -12,45 +12,45 @@
 
 #include "push_swap.h"
 
-stack	*ft_for_two(stack *pileA)
+t_stack	*ft_for_two(t_stack *pile_a)
 {
-	stack	*element;
+	t_stack	*element;
 
-	element = pileA->next;
-	if (pileA->value > element->value)
-		pileA = ft_swap(pileA);
-	return (pileA);
+	element = pile_a->next;
+	if (pile_a->value > element->value)
+		pile_a = ft_swap(pile_a);
+	return (pile_a);
 }
 
-stack	*ft_norme_for_three(stack *pileA, stack *element)
+t_stack	*ft_norme_for_three(t_stack *pile_a, t_stack *element)
 {
-	if (pileA->value > element->next->value)
-		pileA = ft_reverse_last(pileA);
+	if (pile_a->value > element->next->value)
+		pile_a = ft_reverse_last(pile_a);
 	else
 	{
-		pileA = ft_swap(pileA);
-		pileA = ft_reverse(pileA);
+		pile_a = ft_swap(pile_a);
+		pile_a = ft_reverse(pile_a);
 	}
-	return (pileA);
+	return (pile_a);
 }
 
-stack	*only_three(stack *pileA, int arg)
+t_stack	*only_three(t_stack *pile_a, int arg)
 {
-	stack	*elem;
+	t_stack	*elem;
 
-	elem = pileA->next;
+	elem = pile_a->next;
 	if (arg == 2)
-		return (ft_for_two(pileA));
-	if (elem->value > pileA->value && elem->value > elem->next->value)
-		pileA = ft_norme_for_three(pileA, elem);
-	else if (elem->value < pileA->value && elem->value > elem->next->value)
+		return (ft_for_two(pile_a));
+	if (elem->value > pile_a->value && elem->value > elem->next->value)
+		pile_a = ft_norme_for_three(pile_a, elem);
+	else if (elem->value < pile_a->value && elem->value > elem->next->value)
 	{
-		pileA = ft_swap(pileA);
-		pileA = ft_reverse_last(pileA);
+		pile_a = ft_swap(pile_a);
+		pile_a = ft_reverse_last(pile_a);
 	}
-	else if (pileA->value > elem->next->value)
-		pileA = ft_reverse(pileA);
-	else if (pileA->value < elem->next->value && pileA->value > elem->value)
-		pileA = ft_swap(pileA);
-	return (pileA);
+	else if (pile_a->value > elem->next->value)
+		pile_a = ft_reverse(pile_a);
+	else if (pile_a->value < elem->next->value && pile_a->value > elem->value)
+		pile_a = ft_swap(pile_a);
+	return (pile_a);
 }

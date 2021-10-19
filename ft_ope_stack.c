@@ -14,16 +14,16 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-int	is_empty_stack(stack *st)
+int	is_empty_t_stack(t_stack *st)
 {
 	if (st == NULL)
 		return (1);
 	return (0);
 }
 
-stack	*empiler(stack *pile, int nombre)
+t_stack	*empiler(t_stack *pile, int nombre)
 {
-	stack	*element;
+	t_stack	*element;
 
 	element = malloc(sizeof(*element));
 	if (element == NULL)
@@ -33,11 +33,11 @@ stack	*empiler(stack *pile, int nombre)
 	return (element);
 }
 
-stack	*clear_stack(stack *pile)
+t_stack	*clear_t_stack(t_stack *pile)
 {
-	stack	*element;
+	t_stack	*element;
 
-	if (is_empty_stack(pile))
+	if (is_empty_t_stack(pile))
 		return (NULL);
 	while (pile)
 	{
@@ -48,14 +48,9 @@ stack	*clear_stack(stack *pile)
 	return (pile);
 }
 
-int	depiler(stack *pile)
+t_stack	*ft_next_number(t_stack *pile)
 {
-	return (pile->value);
-}
-
-stack	*ft_next_number(stack *pile)
-{
-	stack	*tmp;
+	t_stack	*tmp;
 
 	tmp = pile;
 	pile = pile->next;
@@ -63,24 +58,11 @@ stack	*ft_next_number(stack *pile)
 	return (pile);
 }
 
-stack	*ft_free_stack(stack *pile)
+t_stack	*ft_free_t_stack(t_stack *pile)
 {
-	stack	*element;
+	t_stack	*element;
 
 	element = pile->next;
 	free(pile);
 	return (element);
-}
-
-int	ft_lstsize(stack *pileA)
-{
-	int	size;
-
-	size = 0;
-	while (pileA)
-	{
-		++size;
-		pileA = pileA->next;
-	}
-	return (size);
 }

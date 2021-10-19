@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_morceaux(stack *pile, int tmp)
+int	ft_morceaux(t_stack *pile, int tmp)
 {
 	while (pile)
 	{
@@ -25,7 +25,7 @@ int	ft_morceaux(stack *pile, int tmp)
 	return (tmp);
 }
 
-int	ft_norme_opti_for_i(stack *pile, int i)
+int	ft_norme_opti_for_i(t_stack *pile, int i)
 {
 	if (pile && pile->value > i)
 		i = pile->value;
@@ -38,7 +38,7 @@ int	ft_norme_opti_for_i(stack *pile, int i)
 	return (i);
 }
 
-int	ft_morceaux_suite(stack *pile, int tmp)
+int	ft_morceaux_suite(t_stack *pile, int tmp)
 {
 	int	i;
 	int	fin;

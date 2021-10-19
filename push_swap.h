@@ -1,89 +1,100 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <fcntl.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-typedef struct StackElement
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <fcntl.h>
+# include <limits.h>
+
+typedef struct s_stack
 {
-    int                       value;
-    struct StackElement       *next;
-}          stack;
+	int					value;
+	struct s_stack		*next;
+}	t_stack;
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 5000
 # endif
 
-void    afficherPile(stack *pileA, stack *pile_b, int pivot);
-stack   *tri_pile(stack *pileA, stack *pile_b, int arg);
-int     depiler(stack *pile);
-stack   *empiler(stack *pile, int nombre);
-stack   *initalisation(stack *pile);
-stack   *clear_stack(stack *pile);
-stack   *ft_next_number(stack *pile);
-int     ft_atoi(char *str);
-stack   *ft_free_stack(stack *pile);
-stack   *ft_swap(stack *pile);
-stack   *ft_add_back(stack **alst, stack *new);
-stack   *ft_reverse(stack *pile);
-stack   *ft_add_front(stack **alst, stack *new);
-stack   *ft_reverse_last(stack *pile);
-stack   *ft_swap_between(stack *pile_more, int add);
-stack   *only_three(stack *pileA, int arg);
-stack   *only_five(stack *pileA, stack *pile_b, int arg);
-stack   *ft_for_four(stack *pileA, stack *pile_b, stack *element);
-stack   *for_four(stack *pileA, stack *pile_b);
-stack   *for_five(stack *pileA, stack *pile_b);
-stack   *ft_for_two(stack *pileA);
-stack   *ft_parcing_five(stack *pileA, stack *pile_b, int tmp);
-stack   *ft_hundred(stack *pileA);
-stack   *ft_opti_hundred(stack *pileA, stack *pile_b);
-stack   *ft_swap_between_b(stack *pile_more, int add);
+void	afficherPile(t_stack *pileA, t_stack *pile_b);
+t_stack	*tri_pile(t_stack *pileA, t_stack *pile_b, int arg);
+int		depiler(t_stack *pile);
+t_stack	*empiler(t_stack *pile, int nombre);
+t_stack	*initalisation(t_stack *pile);
+t_stack	*clear_t_stack(t_stack *pile);
+t_stack	*ft_next_number(t_stack *pile);
+int		ft_atoi(char *str);
+t_stack	*ft_free_t_stack(t_stack *pile);
+t_stack	*ft_swap(t_stack *pile);
+t_stack	*ft_add_back(t_stack **alst, t_stack *new);
+t_stack	*ft_reverse(t_stack *pile);
+t_stack	*ft_add_front(t_stack **alst, t_stack *new);
+t_stack	*ft_reverse_last(t_stack *pile);
+t_stack	*ft_swap_between(t_stack *pile_more, int add);
+t_stack	*only_three(t_stack *pileA, int arg);
+t_stack	*only_five(t_stack *pileA, t_stack *pile_b, int arg);
+t_stack	*ft_for_four(t_stack *pileA, t_stack *pile_b, t_stack *element);
+t_stack	*for_four(t_stack *pileA, t_stack *pile_b);
+t_stack	*for_five(t_stack *pileA, t_stack *pile_b);
+t_stack	*ft_for_two(t_stack *pileA);
+t_stack	*ft_parcing_five(t_stack *pileA, t_stack *pile_b, int tmp);
+t_stack	*ft_hundred(t_stack *pileA);
+t_stack	*ft_opti_hundred(t_stack *pileA, t_stack *pile_b);
+t_stack	*ft_swap_between_b(t_stack *pile_more, int add);
 char	**ft_split(char const *s, char c);
-void    ft_verif_double(stack *pile);
-int     ft_is_digit(char *str);
-int	    ft_lstsize(stack *pileA);
-int     ft_is_order(stack *pileA);
-stack   *ft_tri_hundred(stack *pileA, int pos, int i);
-stack    *ft_swap_between_tmp(stack *pile_more, int add);
-stack   *ft_hundred_b(stack *pileA);
-stack   *ft_reverse_b(stack *pile);
-stack   *ft_reverse_last_b(stack *pile);
-stack   *ft_less_hundred(stack *pileA);
-int     ft_morceaux(stack* pile, int tmp);
-int     ft_morceaux_suite(stack* pile, int tmp);
-int ft_norme_opti_for_i(stack *pile, int i);
-stack   *ft_opti_five_hundred(stack *pileA);
-stack   *ft_opti_hundred_five(stack *pileA);
-stack   *ft_parcing_all(stack *pileA, stack *pile_b, int what_position);
-stack   *ft_swap_b(stack *pile);
-stack   *ft_find_little_less(stack *pileA, int count);
-stack   *ft_norme_for_find_litle_less(stack *tmp_elem, stack *element, stack *pileA, stack *tab, int tmp);
-stack     *ft_tri_tab_less(stack *tab, int count);
-stack   *ft_norme_for_tritab_less(int c, int tmp, stack *tmp_tab, stack *tab);
-stack   *ft_norme_for_lesshundred(stack *pileA, stack *pile_b);
-stack     *ft_tri_tab_five(stack *tab, int count);
-stack   *ft_norme_for_tritab_five(int count, int tmp, stack *tmp_tab, stack *tab);
-stack   *ft_norme_for_index(stack *pileA, stack *tab, int tmp, int count);
-stack   *ft_index(stack *pileA, int count);
+void	ft_verif_double(t_stack *pile);
+int		ft_is_digit(char *str);
+int		ft_lstsize(t_stack *pileA);
+int		ft_is_order(t_stack *pileA);
+t_stack	*ft_tri_hundred(t_stack *pileA, int pos, int i);
+t_stack	*ft_swap_between_tmp(t_stack *pile_more, int add);
+t_stack	*ft_hundred_b(t_stack *pileA);
+t_stack	*ft_reverse_b(t_stack *pile);
+t_stack	*ft_reverse_last_b(t_stack *pile);
+t_stack	*ft_less_hundred(t_stack *pileA);
+int		ft_morceaux(t_stack *pile, int tmp);
+int		ft_morceaux_suite(t_stack *pile, int tmp);
+int		ft_norme_opti_for_i(t_stack *pile, int i);
+t_stack	*ft_opti_five_hundred(t_stack *pileA);
+t_stack	*ft_opti_hundred_five(t_stack *pileA);
+t_stack	*ft_parcing_all(t_stack *pileA, t_stack *pile_b, int what_position);
+t_stack	*ft_swap_b(t_stack *pile);
+t_stack	*ft_find_little_less(t_stack *pileA, int count);
+t_stack	*ft_tri_tab_less(t_stack *tab, int count);
+t_stack	*ft_norme_for_lesshundred(t_stack *pileA, t_stack *pile_b);
+t_stack	*ft_tri_tab_five(t_stack *tab, int count);
+t_stack	*ft_norme_for_index(t_stack *pileA, t_stack *tab, int tmp, int count);
+t_stack	*ft_index(t_stack *pileA, int count);
 char	*ft_strjoin_free(char *s1, char *s2, int f);
 int		ft_count(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
-char    *ft_substr(char *s, int start, int len);
+char	*ft_substr(char *s, int start, int len);
 char	*ft_strdup(char *s);
-void    *ft_calloc(int count, int size);
+void	*ft_calloc(int count, int size);
 char	*ft_strchr(char *s, int c);
 int		ft_strlen(char *s);
 int		read_line(int fd, char **dest);
 char	*ft_no_leaks(char *dest, int i);
 int		get_next_line(int fd, char **line);
-stack *ft_second_algo(stack *pileA);
-stack	*ft_reverse_tmp(stack *pile);
-stack	*ft_reverse2(stack *pile);
-stack	*ft_argc_max(char **argv, int argc, stack *pileA);
-stack	*ft_argc_min(char **argv, stack *pileA);
-int	is_empty_stack(stack *st);
+t_stack	*ft_second_algo(t_stack *pileA);
+t_stack	*ft_reverse_tmp(t_stack *pile);
+t_stack	*ft_reverse2(t_stack *pile);
+t_stack	*ft_argc_max(char **argv, int argc, t_stack *pileA);
+t_stack	*ft_argc_min(char **argv, t_stack *pileA);
+int		is_empty_t_stack(t_stack *st);
 void	ft_putchar(char c);
-char	*ft_putstr(char *s, int n);
-stack	*ft_swap_check(stack *pile);
-stack	*ft_reverse_last_check(stack *pile);
+void	ft_putstr(char *s);
+t_stack	*ft_swap_check(t_stack *pile);
+t_stack	*ft_reverse_last_check(t_stack *pile);
+int		ft_strlen_const(const char *s);
+int		ft_cmp(const char *s1, const char *s2);
+t_stack	*ft_swap_checker(t_stack *pile);
+t_stack	*ft_reverse_check(t_stack *pile);
+t_stack	*ft_reverse_last_checker(t_stack *pile);
+void	ft_print_error(char *line);
+void	ft_result_checker(t_stack *pile_a, t_stack *pile_b);
+int		ft_error(const char *s);
+
+#endif
