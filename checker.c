@@ -98,11 +98,11 @@ int	main(int argc, char **argv)
 	else
 		pile_a = ft_argc_max(argv, argc, pile_a);
 	ft_verif_double(pile_a);
-	if ((ft_is_order(pile_a)) == 0 )
+	/*if ((ft_is_order(pile_a)) == 0 )
 	{
 		clear_t_stack(pile_a);
 		exit(EXIT_FAILURE);
-	}
+	}*/
 	ft_check(pile_a, pile_b);
 	return (0);
 }

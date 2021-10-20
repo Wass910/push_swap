@@ -102,7 +102,7 @@ char	*ft_strjoin_free(char *s1, char *s2, int f)
 	int		i;
 	char	*str;
 
-	f = 0;
+	f++;
 	e = 0;
 	i = ft_count(s1, s2);
 	str = malloc(sizeof(*str) * i);

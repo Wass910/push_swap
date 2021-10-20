@@ -71,13 +71,11 @@ t_stack	*ft_argc_min(char **argv, t_stack *pile_a)
 
 int	ft_is_order(t_stack *pile_a)
 {
-	t_stack	*element;
 	int		i;
 
 	if (!pile_a)
 		return (1);
 	i = 0;
-	element = pile_a->next;
 	while (pile_a->next)
 	{
 		if (pile_a->value > pile_a->next->value)

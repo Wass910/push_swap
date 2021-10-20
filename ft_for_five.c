@@ -63,9 +63,7 @@ t_stack	*for_five(t_stack *pile_a, t_stack *pile_b)
 t_stack	*only_five(t_stack *pile_a, t_stack *pile_b, int arg)
 {
 	t_stack	*element;
-	int		tmp;
 
-	tmp = 0;
 	if (arg == 4)
 	{
 		pile_a = for_four(pile_a, pile_b);
