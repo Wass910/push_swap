@@ -56,16 +56,8 @@ t_stack	*ft_argc_min(char **argv, t_stack *pile_a)
 
 	i = 0;
 	dest = ft_split(argv[1], ' ');
-	if (dest != NULL)
-	{
-		while (dest[i] != NULL)
-			i++;
-	}
-	i--;
-	if (i == 0)
-		return (0);
-	else
-		pile_a = ft_fill_pile(i, pile_a, dest);
+	pile_a = ft_fill_pile(i, pile_a, dest);
+	exit(EXIT_SUCCESS);
 	return (pile_a);
 }
 

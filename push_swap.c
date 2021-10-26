@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 	arg = 0;
 	pile_a = NULL;
 	pile_b = NULL;
+	if (argc == 1)
+		exit(EXIT_SUCCESS);
 	if (argc <= 2)
 		pile_a = ft_argc_min(argv, pile_a);
 	else

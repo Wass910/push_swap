@@ -91,18 +91,13 @@ int	main(int argc, char **argv)
 
 	pile_a = NULL;
 	pile_b = NULL;
-	if (argc == 1 || argc == 2)
+	if (argc == 1)
 		exit(EXIT_FAILURE);
 	if (argc <= 2)
 		pile_a = ft_argc_min(argv, pile_a);
 	else
 		pile_a = ft_argc_max(argv, argc, pile_a);
 	ft_verif_double(pile_a);
-	/*if ((ft_is_order(pile_a)) == 0 )
-	{
-		clear_t_stack(pile_a);
-		exit(EXIT_FAILURE);
-	}*/
 	ft_check(pile_a, pile_b);
 	return (0);
 }
