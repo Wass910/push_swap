@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if ((ft_is_order(pile_a)) == 0 )
 	{
 		clear_t_stack(pile_a);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 	pile_a = tri_pile(pile_a, pile_b, arg);
 	return (0);
