@@ -18,11 +18,13 @@ t_stack	*ft_fill_pile(int i, t_stack *pile_a, char **dest)
 	{
 		if (ft_is_digit(dest[i]) == 1)
 		{
+			free(dest);
+			free(dest[i]);
 			clear_t_stack(pile_a);
 			printf("ERROR\n");
 			exit(EXIT_FAILURE);
 		}
-		pile_a = empiler(pile_a, ft_atoi(dest[i]));
+		pile_a = empiler(pile_a, ft_atoi(dest[i], dest, pile_a));
 		free(dest[i]);
 		i--;
 	}
@@ -57,6 +59,7 @@ t_stack	*ft_argc_min(char **argv, t_stack *pile_a)
 	i = 0;
 	dest = ft_split(argv[1], ' ');
 	pile_a = ft_fill_pile(i, pile_a, dest);
+	pile_a = ft_free_t_stack(pile_a);
 	exit(EXIT_SUCCESS);
 	return (pile_a);
 }

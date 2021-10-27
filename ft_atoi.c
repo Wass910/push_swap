@@ -12,13 +12,19 @@
 
 #include "push_swap.h"
 
-void	error_and_exit(void)
+void	error_and_exit(char *str, char **dest, t_stack *pile)
 {
+	while (pile)
+	{
+		pile = ft_free_t_stack(pile);
+	}
+	free(str);
+	free(dest);
 	ft_putstr("ERROR");
 	exit(EXIT_FAILURE);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, char **dest, t_stack *pile)
 {
 	int			i;
 	long int	nb;
@@ -41,7 +47,7 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	if (nb > INT_MAX)
-		error_and_exit();
+		error_and_exit(str, dest, pile);
 	return (nb * signe);
 }
 

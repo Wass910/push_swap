@@ -37,7 +37,7 @@ t_stack	*empiler(t_stack *pile, int nombre);
 t_stack	*initalisation(t_stack *pile);
 t_stack	*clear_t_stack(t_stack *pile);
 t_stack	*ft_next_number(t_stack *pile);
-int		ft_atoi(char *str);
+int		ft_atoi(char *str, char **dest, t_stack *pile);
 t_stack	*ft_free_t_stack(t_stack *pile);
 t_stack	*ft_swap(t_stack *pile);
 t_stack	*ft_add_back(t_stack **alst, t_stack *new);

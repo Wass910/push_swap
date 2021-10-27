@@ -90,5 +90,7 @@ t_stack	*tri_pile(t_stack *pileA, t_stack *pile_b, int arg)
 		pileA = ft_parcing_all(pileA, pile_b, 5);
 	else if (arg > 300)
 		pileA = ft_parcing_all(pileA, pile_b, 11);
+	while (pileA)
+		pileA = ft_free_t_stack(pileA);
 	return (pileA);
 }

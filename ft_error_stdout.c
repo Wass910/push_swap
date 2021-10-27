@@ -34,8 +34,10 @@ void	ft_verif_double(t_stack *pile)
 {
 	t_stack	*pile_tmp;
 	int		val;
+	t_stack	*pile_var;
 
-	while (pile)
+	pile_var = pile;
+	while (pile_var)
 	{
 		pile_tmp = pile->next;
 		val = pile->value;
@@ -44,12 +46,13 @@ void	ft_verif_double(t_stack *pile)
 			if (val == pile_tmp->value)
 			{
 				printf("ERROR\n");
-				clear_t_stack(pile);
+				while (pile_tmp)
+					pile_tmp = ft_free_t_stack(pile_tmp);
 				exit(EXIT_FAILURE);
 			}
 			pile_tmp = pile_tmp->next;
 		}
-		pile = pile->next;
+		pile_var = pile_var->next;
 	}
 	return ;
 }
