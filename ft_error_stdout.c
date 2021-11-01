@@ -35,24 +35,26 @@ void	ft_verif_double(t_stack *pile)
 	t_stack	*pile_tmp;
 	int		val;
 	t_stack	*pile_var;
+	t_stack	*pile2;
 
 	pile_var = pile;
+	pile2 = pile;
 	while (pile_var)
 	{
-		pile_tmp = pile->next;
+		pile_tmp = pile2->next;
 		val = pile_var->value;
 		while (pile_tmp)
 		{
 			if (val == pile_tmp->value)
 			{
 				printf("ERROR\n");
-				while (pile_tmp)
-					pile_tmp = ft_free_t_stack(pile_tmp);
+				while (pile)
+					pile = ft_free_t_stack(pile);
 				exit(EXIT_FAILURE);
 			}
 			pile_tmp = pile_tmp->next;
 		}
-		pile = pile->next;
+		pile2 = pile2->next;
 		pile_var = pile_var->next;
 	}
 	return ;
