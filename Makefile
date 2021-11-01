@@ -49,7 +49,7 @@ NAME			= push_swap
 NAMECHECKER		= checker
 
 
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -fsanitize=address
 
 RM				= rm -f
 

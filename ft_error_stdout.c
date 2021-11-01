@@ -40,7 +40,7 @@ void	ft_verif_double(t_stack *pile)
 	while (pile_var)
 	{
 		pile_tmp = pile->next;
-		val = pile->value;
+		val = pile_var->value;
 		while (pile_tmp)
 		{
 			if (val == pile_tmp->value)
@@ -52,6 +52,7 @@ void	ft_verif_double(t_stack *pile)
 			}
 			pile_tmp = pile_tmp->next;
 		}
+		pile = pile->next;
 		pile_var = pile_var->next;
 	}
 	return ;
